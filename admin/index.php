@@ -1,3 +1,18 @@
+<?php
+include ('includes/admin_functions.php');
+    $uname = " ";
+    $pass = " ";
+if(isset($_POST["submit"]))
+{
+    $uname = $_POST["$uname"];
+    $pass = $_POST["$pass"];
+
+    login($uname,$pass);
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +22,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body>
     <div class="container">
         <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
@@ -25,23 +41,6 @@
                             </div>
                             <button type="submit" class="btn btn-primary btn-block">Login</button>
                         </form>
-                        <?php
-                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            $username = $_POST['username'];
-                            $password = $_POST['password'];
-
-                            // Dummy credentials for demonstration purposes
-                            $valid_username = 'user';
-                            $valid_password = 'password';
-
-                            if ($username === $valid_username && $password === $valid_password) {
-                                header('Location: dashboard.php');
-                                exit();
-                            } else {
-                                echo '<div class="alert alert-danger mt-3" role="alert">Invalid credentials, please try again.</div>';
-                            }
-                        }
-                        ?>
                     </div>
                 </div>
             </div>
