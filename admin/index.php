@@ -1,13 +1,12 @@
 <?php
 include ('includes/admin_functions.php');
-    $uname = " ";
-    $pass = " ";
+include ('../db.php');
 if(isset($_POST["submit"]))
 {
     $uname = $_POST["$uname"];
     $pass = $_POST["$pass"];
 
-    login($uname,$pass);
+   echo login($uname,$pass,$conn);
 }
 
 ?>
