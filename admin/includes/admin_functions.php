@@ -1,8 +1,8 @@
 <?php 
 
-function login($uname, $pass)
+function login($uname, $pass, $conn)
 {
-$sql = "SELECT * from admin where 'uname' = $uname AND 'pass' = $pass";
+$sql = "SELECT * from admin where adminusername = '$uname' AND password = '$pass' ";
 
 
 $resultData = mysqli_query($conn,$sql);

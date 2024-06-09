@@ -2,12 +2,6 @@
 include ('includes/admin_functions.php');
 include ('../db.php');
 if(isset($_POST["submit"]))
-{
-    $uname = $_POST["$uname"];
-    $pass = $_POST["$pass"];
-
-   echo login($uname,$pass,$conn);
-}
 
 ?>
 
@@ -29,7 +23,7 @@ if(isset($_POST["submit"]))
                 <div class="card shadow-lg border-0">
                     <div class="card-body">
                         <h2 class="text-center">Login</h2>
-                        <form action="login.php" method="post">
+                        <form action="index.php" method="post">
                             <div class="form-group">
                                 <label for="username">Username</label>
                                 <input type="text" class="form-control" id="username" name="username" required>
@@ -47,3 +41,22 @@ if(isset($_POST["submit"]))
     </div>
 </body>
 </html>
+<?php
+
+{
+    $uname = $_POST["username"];
+    $pass = $_POST["password"];
+
+   
+    if( login($uname,$pass,$conn) != false)
+    {
+        echo "pogi";
+    }
+    else
+    {
+        echo "panget";
+    }
+}
+
+
+?>
