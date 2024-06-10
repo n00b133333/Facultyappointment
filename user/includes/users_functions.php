@@ -7,7 +7,7 @@ require '../vendor/autoload.php'; // Adjust the path as necessary
 
 function login($uname, $pass, $conn)
 {
-    $sql = "SELECT * FROM admin WHERE adminusername = ? AND password = ?";
+    $sql = "SELECT * FROM users WHERE u_username = ? AND password = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $uname, $pass);
     $stmt->execute();
@@ -21,7 +21,7 @@ function login($uname, $pass, $conn)
 }
 
 function register($username, $password, $email, $conn) {
-    $query = "SELECT * FROM admin WHERE adminusername = ?";
+    $query = "SELECT * FROM users WHERE u_username = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -33,7 +33,7 @@ function register($username, $password, $email, $conn) {
     
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $otp = rand(100000, 999999); // Generate a 6-digit OTP
-    $query = "INSERT INTO admin (adminusername, password, adminemail, otp) VALUES (?, ?, ?, ?)";
+    $query = "INSERT INTO users (u_username, u_pass, u_email, otp) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("sssi", $username, $hashed_password, $email, $otp);
     
@@ -49,7 +49,7 @@ function sendConfirmationEmail($email, $otp) {
 
     try {
         //Server settings
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;                      //Enable verbose debug output
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -77,7 +77,7 @@ function sendConfirmationEmail($email, $otp) {
 }
 
 function verifyOTP($username, $otp, $conn) {
-    $query = "SELECT * FROM admin WHERE adminusername = ? AND otp = ?";
+    $query = "SELECT * FROM users WHERE u_username = ? AND otp = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("si", $username, $otp);
     $stmt->execute();
@@ -85,7 +85,7 @@ function verifyOTP($username, $otp, $conn) {
 
     if ($result->num_rows > 0) {
         // OTP is correct, clear OTP field
-        $query = "UPDATE admin SET otp = NULL WHERE adminusername = ?";
+        $query = "UPDATE users SET otp = NULL , status = '1' WHERE u_username = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("s", $username);
         $stmt->execute();
