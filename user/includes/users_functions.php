@@ -3,7 +3,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require '../vendor/autoload.php'; // Adjust the path as necessary
+require 'vendor/autoload.php'; // Adjust the path as necessary
 
 function login($uname, $pass, $conn)
 {
