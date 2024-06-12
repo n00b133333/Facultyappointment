@@ -1,5 +1,5 @@
 <?php
-$page = "Dashboard";
+$page = "Logs";
 include('includes/header.php'); ?>
 
 <?php include('includes/sidenavbar.php'); ?>
