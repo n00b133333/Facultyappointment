@@ -1,10 +1,12 @@
-<?php
-if(isset($_SESSION["user_id"])){
-    header("Location: " . $_SERVER['HTTP_REFERER']);
-    exit();
-}
-?>
-
+ <?php
+//  session_start();
+// if(isset($_SESSION["user_id"])){
+//     header("Location: " . $_SERVER['HTTP_REFERER']);
+//     exit();
+// }
+?> 
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,7 +44,7 @@ if(isset($_SESSION["user_id"])){
                 <div class="card shadow-lg border-0">
                     <div class="card-body">
                         <h2 class="text-center">Login</h2>
-                        <form action="register.php" method="post">
+                        <form action="includes/login.inc.php" method="post">
                             <div class="form-group">
                                 <label for="username">Username</label>
                                 <input type="text" class="form-control" id="unamelogin" name="username" required>
