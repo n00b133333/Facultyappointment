@@ -9,6 +9,29 @@ body{
     align-items: center;    /* Centers vertically */
     background-color: #f4f4f4;
     padding: 20px;
+  
+
+
+}
+
+@media (min-width: 990px) {
+    .main-content {
+    width: 82.5%!important;
+    margin-left:280px;
+    
+
+    }
+}
+
+@media (max-width: 600px) {
+    .main-content {
+        flex-direction: column;
+    
+
+    }
+    .card{
+        width: 100%;
+    }
 }
 
 #sidebar{
