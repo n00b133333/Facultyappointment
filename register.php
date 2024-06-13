@@ -11,7 +11,7 @@ if(isset($_POST["submit"])) {
     $otp = register($uname, $pass, $email, $conn);
     if ($otp !== false) {
         if (sendConfirmationEmail($email, $otp)) {
-            echo "<script>alert('User registered successfully! An OTP has been sent to your email'); window.location.href='verify.php';</script>";
+            echo "<script>alert('User registered successfully! An OTP has been sent to your email'); window.location.href='user/verify.php';</script>";
         } else {
             echo "User registered successfully! However, the OTP email could not be sent.";
         }
