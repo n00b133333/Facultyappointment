@@ -53,6 +53,7 @@ if(isset($_POST["submit"])) {
                             </div>
                             <button type="submit" class="btn btn-primary btn-block" name="submit">Register</button>
                         </form>
+                        <p class="mt-2">Already have an account? <a href="user/index.php">Login here</a></p>
                     </div>
                 </div>
             </div>

@@ -3,7 +3,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require '../vendor/autoload.php'; // Adjust the path as necessary
+
 
 function login($uname, $pass, $conn)
 {
@@ -94,4 +94,20 @@ function verifyOTP($username, $otp, $conn) {
         return false;
     }
 }
+
+
+function usernameexists($conn, $uname){
+    $sql="SELECT * FROM users WHERE u_username = '$uname'";
+    
+            $resultData = mysqli_query($conn,$sql);
+    
+        if($row = mysqli_fetch_assoc($resultData)){
+            return $row;
+        }
+        else{
+            $results = false;
+            return $results;
+        }
+    }
+
 ?>
