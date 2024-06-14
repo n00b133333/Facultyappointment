@@ -4,7 +4,7 @@ include('includes/header.php'); ?>
 
 <?php include('includes/sidenavbar.php'); ?>
 
-<div class="main-content gap-3" >
+
 <div class="card col" >
   <div class="card-body">
     <h5 class="card-title">Total Appointment</h5>
@@ -61,7 +61,7 @@ include('includes/header.php'); ?>
   </div>
 </div>
 
-</div>
+
 
 
 <?php include('includes/footer.php'); ?>

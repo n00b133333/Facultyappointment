@@ -16,6 +16,8 @@
   
 <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
 
+<?php include '../db.php'; ?>
+<?php include 'includes/admin_functions.php'?>
 
 </head>
 <body class="fixed-nav sticky-footer bg-light" id="page-top">

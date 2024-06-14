@@ -4,7 +4,7 @@ include('includes/header.php'); ?>
 
 <?php include('includes/sidenavbar.php'); ?>
 
-<div class="main-content gap-3" >
+
 
 
 <table id="myTable" class="display ">
@@ -31,7 +31,7 @@ include('includes/header.php'); ?>
     </tbody>
 </table>
 
-</div>
+
 
 <script>
    let table = new DataTable('#myTable', {
