@@ -1,9 +1,11 @@
 <?php
 include ('db.php');
+require 'vendor/autoload.php'; // Adjust the path as necessary
 include ('user/includes/users_functions.php');
 
 
 if(isset($_POST["submit"])) {
+
     $uname = $_POST["username"];
     $pass = $_POST["password"];
     $email = $_POST["email"];
@@ -19,6 +21,7 @@ if(isset($_POST["submit"])) {
         echo "Registration failed.";
     }
 }
+
 ?>
 
 <!DOCTYPE html>

@@ -1,4 +1,4 @@
-<div class="d-flex p-fixed flex-column flex-shrink-0 p-3 bg-light shadow-lg d-none d-lg-flex" style="width: 280px; height:100vh" id="sidebar">
+<div class="d-flex p-fixed flex-column flex-shrink-0 p-3 bg-light shadow-lg d-none d-lg-flex" style="width: 280px; height:100vh; z-index:10;" id="sidebar">
     <a href="/" class="d-flex text-center align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
     <div class="dropdown text-center">
         <a href="#" class="w-full align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -130,6 +130,5 @@
     </div>
 </nav>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
+<div class="main-content gap-3" >
