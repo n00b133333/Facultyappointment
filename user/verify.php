@@ -1,6 +1,7 @@
 <?php
 include ('../db.php');
 include ('includes/users_functions.php');
+require '../vendor/autoload.php'; // Adjust the path as necessary
 
 if(isset($_POST["verify"])) {
     $uname = $_POST["username"];
