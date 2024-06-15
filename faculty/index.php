@@ -1,8 +1,21 @@
 <?php
-include ('includes/admin_functions.php');
+include ('includes/faculty_functions.php');
 include ('../db.php');
 if(isset($_POST["submit"]))
+{
+    $uname = $_POST["username"];
+    $pass = $_POST["password"];
 
+   
+    if( login($uname,$pass,$conn) != false)
+    {
+        echo "pogi";
+    }
+    else
+    {
+        echo "panget";
+    }
+}
 ?>
 
 
@@ -44,18 +57,7 @@ if(isset($_POST["submit"]))
 <?php
 
 {
-    $uname = $_POST["username"];
-    $pass = $_POST["password"];
 
-   
-    if( login($uname,$pass,$conn) != false)
-    {
-        echo "pogi";
-    }
-    else
-    {
-        echo "panget";
-    }
 }
 
 

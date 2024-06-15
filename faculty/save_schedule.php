@@ -15,7 +15,7 @@ if(empty($id)){
 }
 $save = $conn->query($sql);
 if($save){
-    echo "<script> alert('Schedule Successfully Saved.'); location.replace('./') </script>";
+    echo "<script> alert('Schedule Successfully Saved.');   window.location.href = 'appointment.php'; </script>";
 }else{
     echo "<pre>";
     echo "An Error occurred.<br>";

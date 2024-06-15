@@ -53,7 +53,7 @@ include('includes/header.php'); ?>
         }
 
         #main-content {
-            margin-left: 250px;
+            margin-left: 10px;
             flex-grow: 1;
             padding: 20px;
             overflow-y: auto;

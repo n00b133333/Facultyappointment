@@ -31,7 +31,7 @@
                 </div> -->
                 <a href="contact.php" class="nav-item nav-link <?php if($page == 4){echo 'active';} ?> ">Contact</a>
             </div>
-            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Schedule Now<i class="fa fa-arrow-right ms-3"></i></a>
+            <a href="user/register.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Schedule Now<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
     <!-- Navbar End -->
