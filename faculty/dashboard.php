@@ -13,6 +13,10 @@ include('includes/header.php'); ?>
     <title>Scheduling</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="../fullcalendar/lib/main.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script src="../fullcalendar/lib/main.min.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -25,7 +29,7 @@ include('includes/header.php'); ?>
         body {
             height: 100%;
             width: 100%;
-            font-family: Apple Chancery, cursive;
+            font-family: 'Noto Sans';
             margin: 0;
             padding: 0;
         }

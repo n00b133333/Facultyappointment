@@ -1,11 +1,12 @@
 <?php
 session_start();
-include "../../includes/database.inc.php";
-include "functions.admin.php";
+include "../../db.php";
+include "admin_functions.php";
 
 if(isset($_POST['submit'])){
  
 $fname = $_POST['fname'];
+$mname = $_POST['mname'];
 $lname = $_POST['lname'];
 $bday = $_POST['bday'];
 $gender = $_POST['gender'];
@@ -22,6 +23,7 @@ $errorCpass = false;
 $errorContact = false;
 
 $errorfname = false;
+$errormname = false;
 $errorlname = false;
 $errorbday = false;
 $erroremail = false;
@@ -32,7 +34,7 @@ $errorpass = false;
 $errorcpass = false;
 $userExist = false;
 
-if(empty($fname) || empty($lname) || empty($bday) || empty($contact)  || empty($uname) || empty($pass) || empty($cpass) || empty($email) || empty($address) ){
+if(empty($fname) || empty($mname) || empty($lname) || empty($bday) || empty($contact)  || empty($uname) || empty($pass) || empty($cpass) || empty($email) || empty($address) ){
 
     echo "<div class='alert alert-danger alert-dismissible fade show animate__animated animate__fadeOut' role='alert'>
     <strong>Please fill in all important details!</strong><br> You should check in on some of those fields below.
@@ -40,6 +42,10 @@ if(empty($fname) || empty($lname) || empty($bday) || empty($contact)  || empty($
   </div>";
 if(empty($fname)){
     $errorfname=true;
+}
+
+if(empty($mname)){
+    $errormname=true;
 }
 
 if(empty($lname)){
@@ -119,13 +125,8 @@ else if($pass!=$cpass){
 
 else{
 
-$profile = "user.png";
+    add_user($fname, $mname, $lname, $address,$gender,$contact,$bday, $uname, $pass, $email, $conn);
 
-    $sql="INSERT INTO user (fname,lname,bday,gender,pnum,address,email,username,pass,profile) VALUES ('$fname','$lname','$bday','$gender','$contact','$address','$email','$uname','$pass','$profile');";
-
-    mysqli_query($conn,$sql);
-
-    mysqli_close($conn);
 
     echo "
     <script> 
@@ -137,7 +138,7 @@ $profile = "user.png";
     
       }); 
       let button = document.querySelectorAll('.swal2-confirm').forEach(a=>a.onclick =function (){
-        window.location.href = 'user.php'
+        window.location.href = 'users.php'
       })
     
       
@@ -161,6 +162,7 @@ else{
 
 
     var errorfname = "<?php echo $errorfname; ?>";
+    var errormname = "<?php echo $errormname; ?>";
     var errorlname = "<?php echo $errorlname; ?>";
     var errorbday = "<?php echo $errorbday; ?>";
     var erroremail = "<?php echo $erroremail; ?>";
@@ -175,6 +177,10 @@ else{
     if(errorEmpty == true){
         if(errorfname == true){
             $("#fname").addClass("is-invalid");
+        }
+
+        if(errormname == true){
+            $("#mname").addClass("is-invalid");
         }
 
         if(errorlname == true){
@@ -230,7 +236,7 @@ else{
    
 
     if(errorEmpty == false && errorEmail == false && errorCpass == false && errorExist == false && errorContact == false){
-        $("#fname,#lname,#bday,#email,#contact,#address,#uname,#pass,#cpass").val("");
+        $("#fname,#mname,#lname,#bday,#email,#contact,#address,#uname,#pass,#cpass").val("");
     }
   
 

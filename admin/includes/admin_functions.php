@@ -3,7 +3,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require '../vendor/autoload.php'; // Adjust the path as necessary
 
 function login($uname, $pass, $conn)
 {
@@ -122,6 +121,18 @@ function userTable($conn){
 ";
 
         }
+
+        $male = '';
+        $female = '';
+
+      if(  edituserprofile($conn,$row->user_ID)->gender =='Male' ) {
+          $male = 'selected';
+      }
+      elseif(  edituserprofile($conn,$row->user_ID)->gender =='Female'){
+        $female = 'selected';
+      }
+
+
         echo"
         <tr>
         <td>".$row->profile."</td>
@@ -131,7 +142,7 @@ function userTable($conn){
         <td>".$row->contact_number."</td>
         <td>".$row->u_username."</td>
 
-        <td class='text-center d-flex justify-content-evenly gap-2 p-3'><button class='btn btn-outline-success' data-bs-toggle='modal' data-bs-target='#updateModal".$row->user_ID."'>  <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-edit'><path d='M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7'/><path d='M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z'/></svg></button>
+        <td class='text-center d-flex justify-content-evenly gap-2 p-3'><a href='update_user_form.php?id=".$row->user_ID."'><button class='btn btn-outline-success' >  <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-edit'><path d='M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7'/><path d='M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z'/></svg></button></a>
 
         <a href='includes/delete_user.php?id=".$row->user_ID."'><button class='btn btn-outline-danger'> <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-trash-2'><polyline points='3 6 5 6 21 6'/><path d='M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2'/><line x1='10' y1='11' x2='10' y2='17'/><line x1='14' y1='11' x2='14' y2='17'/></svg> </button></a>
         </td>
@@ -142,91 +153,12 @@ function userTable($conn){
 
       
 
-        echo '
-     
-
-<!-- Modal -->
-<div class="modal fade" id="updateModal'.$row->user_ID.'" tabindex="-1" aria-labelledby="updateModal'.$row->user_ID.'Label" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="updateModal'.$row->user_ID.'Label">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        
-<form action="includes/sign_up.inc.php" class="text-center" method="post">
-
-<div class="input-group mb-3">
- 
-  <input type="text" class="form-control" placeholder="First Name" name="fname'.$row->user_ID.'"  id="fname" value="'.edituserprofile($conn,$row->user_ID)->u_fname.'" >
-
-  <input type="text" class="form-control" placeholder="Middle Name" id="mname" value="'.edituserprofile($conn,$row->user_ID)->u_mname.'" >
-
-  <input type="text" class="form-control" placeholder="Last Name" id="lname" value="'.edituserprofile($conn,$row->user_ID)->u_lname.'" >
-</div>
-
-<div class="input-group mb-3">
-<span class="input-group-text">Birth Date</span>
-  <input type="date" class="form-control" placeholder="Birthdate" id="bday" aria-label="Recipient\'s username" aria-describedby="basic-addon2" value="'.edituserprofile($conn,$row->user_ID)->bday.'" >
-  
-</div>
-
-<div class="input-group mb-3">
-<span class="input-group-text">Gender</span>
-<select class="form-select" id="gender" aria-label="Default select example">
-  <option value="Male">Male</option>
-  <option value="Female">Female</option>
-</select>
-
-</div>
-
-
-
-<div class="input-group mb-3">
-  <input type="email" class="form-control" placeholder="Email" id="email" name="email" aria-label="Recipient\'s username" aria-describedby="basic-addon2" value="'.edituserprofile($conn,$row->user_ID)->u_email.'" >
-
-</div>
-
-<div class="input-group mb-3">
-  <input type="text" inputmode="numeric" class="form-control" placeholder="Contact No." id="contact" aria-label="Amount (to the nearest dollar)">
-</div>
-
-<div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Address" id="address" aria-label="Amount (to the nearest dollar)">
-</div>
-
-<div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Username" id="uname" aria-label="Amount (to the nearest dollar)">
-</div>
-
-<div class="input-group mb-3">
-  <input type="password" class="form-control" placeholder="Password" id="pass" aria-label="Amount (to the nearest dollar)">
-</div>
-
-<div class="input-group mb-3">
-  <input type="password" class="form-control" placeholder="Confirm Password" id="cpass" aria-label="Amount (to the nearest dollar)">
-</div>
-
-<div>
-
-<!-- <input type="reset" id="submit" name="signup" value="RESET" class="btn btn-danger ms-3 mt-4 p-2 "> -->
-</div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-        ';
+   
     }
 }
 
 function addusernameexists($conn, $uname){
-    $sql="SELECT * FROM user WHERE username = '$uname'";
+    $sql="SELECT * FROM users WHERE u_username = '$uname'";
     
             $resultData = mysqli_query($conn,$sql);
     
@@ -248,5 +180,28 @@ function addusernameexists($conn, $uname){
         }
 
     }
+
+    function add_user($fname, $mname, $lname, $address, $gender, $contact, $bday, $username, $pass, $email, $conn) {
+      $profile = "user.png";
+      $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
+      $otp = 0;
+      $status = 1;
+      
+      $query = "INSERT INTO users (profile, u_fname, u_mname, u_lname, address, contact_number, gender, bday, u_username, u_pass, u_email, otp, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+      $stmt = $conn->prepare($query);
+      
+      if ($stmt === false) {
+          die('Prepare failed: ' . htmlspecialchars($conn->error));
+      }
+      
+      $stmt->bind_param("sssssssssssii", $profile, $fname, $mname, $lname, $address, $contact, $gender, $bday, $username, $hashed_password, $email, $otp, $status);
+      
+      if ($stmt->execute() === false) {
+          die('Execute failed: ' . htmlspecialchars($stmt->error));
+      }
+      
+      $stmt->close();
+  }
+  
 
 ?>

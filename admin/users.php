@@ -4,6 +4,84 @@ include('includes/header.php'); ?>
 
 <?php include('includes/sidenavbar.php'); ?>
 
+
+<script>
+        $(document).ready(function(){
+            $("form").submit(function(event){
+                event.preventDefault();
+                var fname = $("#fname").val();
+                var mname = $("#mname").val();
+                var lname = $("#lname").val();
+                var bday = $("#bday").val();
+                var gender = $("#gender").val();
+                var email = $("#email").val();
+                var contact = $("#contact").val();
+                var address = $("#address").val();
+                var uname = $("#uname").val();
+                var pass = $("#pass").val();
+                var cpass = $("#cpass").val();
+                var submit = $("#submit").val();
+               
+
+                $(".form-message").load("includes/add_user.php", {
+                  fname:fname,
+                  mname:mname,
+                  lname:lname,
+                  bday:bday,
+                  gender:gender,
+                  email:email,
+                  contact:contact,
+                  address:address,
+                  uname:uname,
+                  pass:pass,
+                  cpass:cpass,
+                  submit:submit
+                })
+            });
+        })
+
+     
+    </script>
+
+    <script>
+  $(document).ready(function () {
+    
+    $("form").submit(function (event) {
+      event.preventDefault();
+
+      var formData = new FormData();
+      formData.append("id", <?php echo $_GET['id'] ?>);
+      formData.append("fname", $("#fname").val());
+      formData.append("lname", $("#lname").val());
+      formData.append("midname", $("#midname").val());
+      formData.append("pic", $("#pic")[0].files[0]);
+      formData.append("gender", $("#gender").val());
+      formData.append("email", $("#email").val());
+      formData.append("bday", $("#bday").val());
+      formData.append("address", $("#address").val());
+      formData.append("pnum", $("#pnum").val());
+      formData.append("uname", $("#uname").val());
+      formData.append("pass", $("#pass").val());
+      formData.append("cpass", $("#cpass").val());
+      formData.append("submit", $("#submit").val());
+
+      $.ajax({
+        url: "includes/user_update.php",
+        type: "POST",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+          $(".form-message").html(response);
+        },
+        error: function (error) {
+          console.log("Error: " + error);
+        },
+      });
+    });
+  });
+</script>
+
 <div class="row text-center mt-3 glass">
     <div class="col">
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -22,13 +100,17 @@ include('includes/header.php'); ?>
         <h1 class="modal-title fs-5" id="exampleModalLabel">Add user</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <div class="form-message"></div>
+      <form action="" method="post">
       <div class="modal-body">
         <?php include 'add_user.php' ?>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" id="submit" class="btn btn-primary">Add user</button>
       </div>
+      </form>
+    
     </div>
   </div>
 </div>

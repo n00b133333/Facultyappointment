@@ -3,7 +3,7 @@
 <div class="input-group mb-3">
  
   <input type="text" class="form-control" placeholder="First Name" name="fname"  id="fname" >
-
+  <input type="text" class="form-control" placeholder="Middle Name" id="mname" >
   <input type="text" class="form-control" placeholder="Last Name" id="lname" >
 </div>
 
@@ -53,3 +53,4 @@
 
 <!-- <input type="reset" id="submit" name="signup" value="RESET" class="btn btn-danger ms-3 mt-4 p-2 "> -->
 </div>
+
