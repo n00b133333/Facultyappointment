@@ -41,7 +41,7 @@ if(isset($_POST['submit'])){
       </div>";
 
     }
-    else if(!password_verify($pass, usernameexists($conn, $uname)['u_pass'])){
+    else if(password_verify($pass, usernameexists($conn, $uname)['u_pass'])){
 
         $errorIncPass = true;
 
@@ -51,7 +51,7 @@ if(isset($_POST['submit'])){
       </div>";
     }
 
-    else if(usernameexists($conn, $uname)['status']==0){
+    else if(usernameexists($conn, $uname)['status']!=$pass){
 
         $errorVerify = true;
 
@@ -76,13 +76,12 @@ if(isset($_POST['submit'])){
         $userexist = usernameexists($conn, $uname);
 
         session_start();
-        $_SESSION["user_ID"] = $userexist['user_ID'];
-        $_SESSION["u_username"] = $userexist['u_username'];
-        $_SESSION["u_fname"] = $userexist['u_fname'];
-        $_SESSION["u_mname"] = $userexist['u_mname'];
-        $_SESSION["u_lname"] = $userexist['u_lname'];
+        $_SESSION["admin_id"] = $userexist['admin_id'];
+        $_SESSION["useridadmin"] = $userexist['username'];
+        $_SESSION["fnameadmin"] = $userexist['fname'];
+        $_SESSION["lnameadmin"] = $userexist['lname'];
 
-        echo "<script>  window.location.href = 'home.php'; </script>";
+        echo "<script>  window.location.href = 'admin_dashboard.php'; </script>";
         exit();
 
 
@@ -101,7 +100,6 @@ else{
 $("#unamelogin,#passlogin,#btnlogin").removeClass("is-invalid");
 var errorEmpty = "<?php echo $errorEmpty; ?>";
 var errorUname = "<?php echo $errorUname; ?>";
-
 var errorPass = "<?php echo $errorPass; ?>";
 var errorUnameExists = "<?php echo $errorUnameExists; ?>";
 var errorIncPass = "<?php echo $errorIncPass; ?>";

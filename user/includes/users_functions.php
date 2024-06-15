@@ -20,7 +20,8 @@ function login($uname, $pass, $conn)
     }
 }
 
-function register($username, $password, $email, $conn) {
+function register($fname, $mname, $lname, $address,$gender,$contact,$bday, $username, $pass, $email, $conn) {
+    $profile = "user.png";
     $query = "SELECT * FROM users WHERE u_username = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $username);
@@ -31,11 +32,11 @@ function register($username, $password, $email, $conn) {
         return false; // Username already exists
     }
     
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
     $otp = rand(100000, 999999); // Generate a 6-digit OTP
-    $query = "INSERT INTO users (u_username, u_pass, u_email, otp) VALUES (?, ?, ?, ?)";
+    $query = "INSERT INTO users (profile,u_fname,u_mname,u_lname,address,contact_number,gender,bday,u_username, u_pass, u_email, otp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("sssi", $username, $hashed_password, $email, $otp);
+    $stmt->bind_param("sssssssssssi",$profile, $fname, $mname, $lname, $address,$contact,$gender,$bday,$username, $hashed_password, $email, $otp);
     
     if ($stmt->execute()) {
         return $otp;
@@ -110,4 +111,45 @@ function usernameexists($conn, $uname){
         }
     }
 
-?>
+
+  
+
+
+    function emptyInputSignup($fname, $lname, $uname, $pass, $repass){
+        $results = false;
+        if(empty($fname) || empty($lname) || empty($uname) || empty($pass) || empty($repass)){
+            $results = true;
+        }
+        else{
+            $results = false;
+        }
+        return $results;
+    }
+    
+
+    
+        function loginUser($conn, $uname, $pass){
+            $userexist = usernameexists($conn, $uname);
+        
+            if($userexist === false){
+                 header("Location:../index.php?error=incorrect_username");
+                 exit();
+            }
+        
+                $passhashed = $userexist['password'];
+                $checkpwd = password_verify($pass,$passhashed);
+                if($checkpwd === false){
+                    header("Location:../index.php?error=incorrect_password");
+                    exit();
+                }
+                else if($checkpwd === true){
+                    session_start();
+                    $_SESSION["userid"] = $userexist['username'];
+                    $_SESSION["fname"] = $userexist['fname'];
+                    $_SESSION["lname"] = $userexist['lname'];
+            
+                    header("Location:../student/student_home.php");
+                    exit();
+            
+                }
+        }
