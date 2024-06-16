@@ -9,7 +9,7 @@ function schedules($conn){
       echo "
       <tr>
           <td>{$row->appointment_name}</td>
-          <td>{$row->date}</td>
+          <td>{$row->appointment_date}</td>
           <td>{$row->start_time}</td>
           <td>{$row->end_time}</td>
           <td>
@@ -35,7 +35,7 @@ function schedules($conn){
                           </div>
                           <div class='form-group'>
                               <label for='appointmentDate{$row->id}' class='form-label'>Date</label>
-                              <input type='date' class='form-control' id='appointmentDate{$row->id}' name='appointmentDate' value='{$row->date}' required>
+                              <input type='date' class='form-control' id='appointmentDate{$row->id}' name='appointmentDate' value='{$row->appointment_date}' required>
                           </div>
                           <div class='form-group'>
                               <label for='startTime{$row->id}' class='form-label'>Start Time</label>

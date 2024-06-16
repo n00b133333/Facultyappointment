@@ -6,7 +6,7 @@ include('includes/sidenavbar.php');
 
 <script>
   $(document).ready(function(){
-    $("form#addAppointmentForm").submit(function(event){
+    $("#addAppointmentForm").submit(function(event){
   event.preventDefault();
   var appointmentName = $("#appointmentName").val();
   var appointmentDate = $("#appointmentDate").val();
@@ -32,31 +32,7 @@ include('includes/sidenavbar.php');
 });
 
 
-    $("form#updateAppointmentForm").submit(function(event){
-      event.preventDefault();
 
-      var formData = new FormData();
-      formData.append("id", <?php echo $_GET['id'] ?>);
-      formData.append("appointmentName", $("#appointmentName").val());
-      formData.append("appointmentDate", $("#appointmentDate").val());
-      formData.append("startTime", $("#startTime").val());
-      formData.append("endTime", $("#endTime").val());
-      formData.append("submit", $("#submit").val());
-
-      $.ajax({
-        url: "includes/update_appointment.php",
-        type: "POST",
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function (response) {
-          $(".form-message").html(response);
-        },
-        error: function (error) {
-          console.log("Error: " + error);
-        },
-      });
-    });
   });
 </script>
 

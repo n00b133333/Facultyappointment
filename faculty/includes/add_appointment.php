@@ -1,9 +1,9 @@
 <?php
 session_start();
 include "../../db.php";
-include "admin_functions.php";
+include "faculty_functions.php";
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if(isset($_POST['submit'])){
     $appointmentName = $_POST['appointmentName'];
     $appointmentDate = $_POST['appointmentDate'];
     $startTime = $_POST['startTime'];
