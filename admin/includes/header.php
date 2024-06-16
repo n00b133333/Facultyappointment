@@ -22,3 +22,24 @@
 
 </head>
 <body class="fixed-nav sticky-footer bg-light" id="page-top">
+
+<?php 
+
+if(isset($_GET['archived'])){
+    echo "
+     <script> 
+     
+     Swal.fire({
+         title: 'Archived!',
+         text: 'Account archived successfully!',
+         icon: 'success',
+     
+       }); 
+       
+     
+       
+       </script>
+    ";
+}
+
+?>

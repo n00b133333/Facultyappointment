@@ -12,7 +12,7 @@ if(isset($_POST['submit'])){
     $bday = $_POST['bday'];
     $address = $_POST['address'];
     $pnum = $_POST['pnum'];
-    $uname = $_POST['uname'];
+
     $pass = $_POST['pass'];
     $cpass = $_POST['cpass'];
     $profilepic = "";
@@ -48,24 +48,24 @@ if(isset($_POST['submit'])){
        
          }
          else{
-             $profilepic = edituserprofile($conn,$id)->profile;
+             $profilepic = editfacultyprofile($conn,$id)->profile;
          }
      }
      else{
-        $profilepic = edituserprofile($conn,$id)->profile;
+        $profilepic = editfacultyprofile($conn,$id)->profile;
      }
      $userid = $id;
-     $sql="UPDATE users SET u_fname = '$fname',
-                             u_lname = '$lname',
-                             u_mname = '$midname',
+     $sql="UPDATE faculty SET fname = '$fname',
+                             lname = '$lname',
+                             mname = '$midname',
                              gender= '$gender',
-                             u_email= '$email',
+                             email= '$email',
                              address= '$address',
                              contact_number= '$pnum',
                              bday= '$bday',
-                             u_username= '$uname',
+                          
                              profile = '$profilepic'
-                             WHERE user_ID = $userid
+                             WHERE faculty_ID = $userid
                               ;";
      
      mysqli_query($conn,$sql);
@@ -82,7 +82,7 @@ if(isset($_POST['submit'])){
      
        }); 
        let button = document.querySelectorAll('.swal2-confirm').forEach(a=>a.onclick =function (){
-         window.location.href = 'users.php'
+         window.location.href = 'faculty.php'
        })
      
        

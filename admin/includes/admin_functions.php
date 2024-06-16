@@ -98,7 +98,7 @@ function verifyOTP($username, $otp, $conn) {
 
 function userTable($conn){
 
-    $sql = "SELECT * FROM users INNER JOIN status on users.status = status.status_id";
+    $sql = "SELECT * FROM users INNER JOIN status on users.status = status.status_id WHERE archive != 1";
 
     $result = mysqli_query($conn,$sql);
     while($row = mysqli_fetch_object($result)){
@@ -134,8 +134,8 @@ function userTable($conn){
 
 
         echo"
-        <tr>
-        <td>".$row->profile."</td>
+        <tr >
+        <td class='text-center '><img src='../uploads/".$row->profile."' alt='' height='50' width='50' style='border-radius:50px;'></td>
         <td>".$row->u_fname." ".$row->u_lname."</td>
         <td>".$row->u_email."</td>
         <td>".$row->address."</td>
@@ -144,7 +144,7 @@ function userTable($conn){
 
         <td class='text-center d-flex justify-content-evenly gap-2 p-3'><a href='update_user_form.php?id=".$row->user_ID."'><button class='btn btn-outline-success' >  <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-edit'><path d='M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7'/><path d='M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z'/></svg></button></a>
 
-        <a href='includes/delete_user.php?id=".$row->user_ID."'><button class='btn btn-outline-danger'> <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-trash-2'><polyline points='3 6 5 6 21 6'/><path d='M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2'/><line x1='10' y1='11' x2='10' y2='17'/><line x1='14' y1='11' x2='14' y2='17'/></svg> </button></a>
+        <a href='includes/archive_user.php?id=".$row->user_ID."'><button class='btn btn-outline-danger'> <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-archive'><polyline points='21 8 21 21 3 21 3 8'/><rect x='1' y='3' width='22' height='5'/><line x1='10' y1='12' x2='14' y2='12'/></svg> </button></a>
         </td>
 
         <td ".$colorClass .">".$svg.$row->status_name."</td>
@@ -157,8 +157,55 @@ function userTable($conn){
     }
 }
 
+
+
+function facultyTable($conn){
+
+    $sql = "SELECT * FROM faculty WHERE archive != 1";
+
+    $result = mysqli_query($conn,$sql);
+    while($row = mysqli_fetch_object($result)){
+      
+     
+
+     
+        $male = '';
+        $female = '';
+
+      if(  editfacultyprofile($conn,$row->faculty_ID)->gender =='Male' ) {
+          $male = 'selected';
+      }
+      elseif(  editfacultyprofile($conn,$row->faculty_ID)->gender =='Female'){
+        $female = 'selected';
+      }
+
+
+        echo"
+        <tr >
+        <td class='text-center '><img src='../uploads/".$row->profile."' alt='' height='50' width='50' style='border-radius:50px;'></td>
+        <td>".$row->fname." ".$row->lname."</td>
+        <td>".$row->email."</td>
+        <td>".$row->address."</td>
+        <td>".$row->contact_number."</td>
+    
+
+        <td class='text-center d-flex justify-content-evenly gap-2 p-3'><a href='update_faculty_form.php?id=".$row->faculty_ID."'><button class='btn btn-outline-success' >  <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-edit'><path d='M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7'/><path d='M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z'/></svg></button></a>
+
+        <a href='includes/archive_faculty.php?id=".$row->faculty_ID."'><button class='btn btn-outline-danger'> <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-archive'><polyline points='21 8 21 21 3 21 3 8'/><rect x='1' y='3' width='22' height='5'/><line x1='10' y1='12' x2='14' y2='12'/></svg> </button></a>
+        </td>
+
+        
+    </tr>
+        ";
+
+      
+
+   
+    }
+}
+
 function addusernameexists($conn, $uname){
-    $sql="SELECT * FROM users WHERE u_username = '$uname'";
+    $sql="SELECT * FROM users WHERE u_username = '$uname'  ";
     
             $resultData = mysqli_query($conn,$sql);
     
@@ -174,6 +221,16 @@ function addusernameexists($conn, $uname){
     function edituserprofile($conn,$userid){
 
         $sql = "SELECT * FROM users WHERE user_ID = $userid";
+        $select = mysqli_query($conn,$sql);
+        while ($row = mysqli_fetch_object($select)){
+            return $row;
+        }
+
+    }
+
+    function editfacultyprofile($conn,$userid){
+
+        $sql = "SELECT * FROM faculty WHERE faculty_ID = $userid";
         $select = mysqli_query($conn,$sql);
         while ($row = mysqli_fetch_object($select)){
             return $row;
@@ -202,6 +259,29 @@ function addusernameexists($conn, $uname){
       
       $stmt->close();
   }
+
+
+  function add_faculty($fname, $mname, $lname, $address, $gender, $contact, $bday,  $pass, $email, $conn) {
+    $profile = "user.png";
+    $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
+   
+    
+    $query = "INSERT INTO faculty (profile, fname, mname, lname, address, contact_number, gender, bday, pass, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($query);
+    
+    if ($stmt === false) {
+        die('Prepare failed: ' . htmlspecialchars($conn->error));
+    }
+    
+    $stmt->bind_param("ssssssssss", $profile, $fname, $mname, $lname, $address, $contact, $gender, $bday, $hashed_password, $email);
+    
+    if ($stmt->execute() === false) {
+        die('Execute failed: ' . htmlspecialchars($stmt->error));
+    }
+    
+    $stmt->close();
+}
+
   
 
 ?>
