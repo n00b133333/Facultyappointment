@@ -6,7 +6,7 @@ use PHPMailer\PHPMailer\Exception;
 
 function login($uname, $pass, $conn)
 {
-    $sql = "SELECT * FROM admin WHERE adminusername = ? AND password = ?";
+    $sql = "SELECT * FROM admin WHERE username = ? AND password = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $uname, $pass);
     $stmt->execute();
@@ -20,7 +20,7 @@ function login($uname, $pass, $conn)
 }
 
 function register($username, $password, $email, $conn) {
-    $query = "SELECT * FROM admin WHERE adminusername = ?";
+    $query = "SELECT * FROM admin WHERE username = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -282,6 +282,34 @@ function addusernameexists($conn, $uname){
     $stmt->close();
 }
 
-  
 
-?>
+
+function usernameexists($conn, $uname){
+    $sql="SELECT * FROM admin WHERE username = '$uname'";
+    
+            $resultData = mysqli_query($conn,$sql);
+    
+        if($row = mysqli_fetch_assoc($resultData)){
+            return $row;
+        }
+        else{
+            $results = false;
+            return $results;
+        }
+    }
+
+
+    function emailexists($conn, $email){
+        $sql="SELECT * FROM admin WHERE email = '$email'";
+        
+                $resultData = mysqli_query($conn,$sql);
+        
+            if($row = mysqli_fetch_assoc($resultData)){
+                return $row;
+            }
+            else{
+                $results = false;
+                return $results;
+            }
+        }
+    

@@ -113,6 +113,14 @@ else if(usernameexists($conn, $uname)){
   </div>";
 }
 
+else if(emailexists($conn, $email)){
+    $errorEmail = true;
+    echo "<div class='alert alert-danger alert-dismissible fade show animate__animated animate__fadeOut' role='alert'>
+    <strong>Email Already Exists!</strong><br> Please enter another email.
+    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+  </div>";
+}
+
 
 else if($pass!=$cpass){
     echo "<div class='alert alert-danger alert-dismissible fade show animate__animated animate__fadeOut' role='alert'>

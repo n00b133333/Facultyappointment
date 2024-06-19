@@ -1,5 +1,9 @@
 <?php
-include("../db.php");
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 
 function schedules($conn){
   $sql = "SELECT * FROM appointments";
@@ -78,4 +82,114 @@ function schedules($conn){
       </div>";
   }
 }
-?>
+
+
+function login($uname, $pass, $conn)
+{
+    $sql = "SELECT * FROM faculty WHERE email = ? AND pass = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $uname, $pass);
+    $stmt->execute();
+    $resultData = $stmt->get_result();
+
+    if($row = $resultData->fetch_assoc()){
+        return $row;
+    } else {
+        return false;
+    }
+}
+
+
+
+function otppass($email, $conn) {
+
+    $query = "SELECT * FROM faculty WHERE email = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows == 0) {
+        return false; // Username already exists
+    }
+    
+
+    $otp = rand(100000, 999999); // Generate a 6-digit OTP
+    $query = "UPDATE faculty SET reset_otp = ? WHERE email = ?";
+   
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("is", $otp,$email);
+    
+    if ($stmt->execute()) {
+        return $otp;
+    } else {
+        return false;
+    }
+}
+
+
+function forgotPasswordEmail($email, $otp) {
+    $mail = new PHPMailer(true);
+
+    try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'facultyappointment90@gmail.com';       //SMTP username
+        $mail->Password   = 'txwu pozr akhl ytsc';                  //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption
+        $mail->Port       = 587;                                    //TCP port to connect to
+
+        //Recipients
+        $mail->setFrom('facultyappointment90@gmail.com', 'Reset Password Code');
+        $mail->addAddress($email);                                  //Add a recipient
+
+        //Content
+        $mail->isHTML(true);                                        //Set email format to HTML
+        $mail->Subject = 'Reset Password';
+        $mail->Body    = "Enter this code to reset your password: <b>{$otp}</b>";
+        $mail->AltBody = "Enter this code to reset your password: {$otp}";
+
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
+        error_log("Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
+        return false;
+    }
+}
+
+
+function verifypassOTP($email, $otp, $conn) {
+    $query = "SELECT * FROM faculty WHERE email = ? AND reset_otp = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("si", $email, $otp);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        // OTP is correct, clear OTP field
+        $query = "UPDATE faculty SET reset_otp = NULL WHERE email = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function usernameexists($conn, $email){
+    $sql="SELECT * FROM faculty WHERE email = '$email'";
+    
+            $resultData = mysqli_query($conn,$sql);
+    
+        if($row = mysqli_fetch_assoc($resultData)){
+            return $row;
+        }
+        else{
+            $results = false;
+            return $results;
+        }
+    }
