@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,12 +110,12 @@ padding: 20px;
             $("form").submit(function(event){
 
                 event.preventDefault();
-                var uname = $("#unamelogin").val();
+                var email= $("#emaillogin").val();
                 var pass = $("#passlogin").val();
                 var submit = $("#btnlogin").val();
 
                 $(".form-message").load("includes/login.inc.php", {
-                    uname:uname,
+                    email:email,
                     pass:pass,
                     submit:submit
                 })
@@ -135,14 +133,14 @@ padding: 20px;
             
             <div class=" glass text-center ">
             <h2 class="mb-3" style="color:whitesmoke">Faculty Login</h2>
-            <form action="includes/sign_up.php" method="post">
+            <form  method="post">
 
            
 
 <div class="col">
 
 <div class="form-floating mb-3">
-<input type="text" class="form-control" id="unamelogin" placeholder="name@example.com" name="uname">
+<input type="text" class="form-control" id="emaillogin" placeholder="name@example.com" name="email">
 <label for="email">Email</label>
 </div>
 
@@ -161,7 +159,8 @@ padding: 20px;
 
 <div class="col">
 
-<button type="submit" class="btn btn-danger px-4 mb-3" id="btnlogin"> LOGIN</button>
+<button type="submit" class="btn btn-danger px-4 mb-3" id="btnlogin"> LOGIN</button><br>
+<a href="forgot_password.php" class="mt-2">Forgot password?</a>
 
 
 

@@ -1,10 +1,15 @@
 
+<?php
+include ('../db.php');
+include ('includes/users_functions.php');
+require '../vendor/autoload.php'; // Adjust the path as necessary
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign in</title>
+    <title>Forgot Password</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   
@@ -105,26 +110,29 @@ padding: 20px;
     </style>
 
     
-<script>
+ <script>
         $(document).ready(function(){
-
-
             $("form").submit(function(event){
-
                 event.preventDefault();
-                var uname = $("#unamelogin").val();
-                var pass = $("#passlogin").val();
-                var submit = $("#btnlogin").val();
+         
+                var email = $("#email").val();
+                var submit = $("#submit").val();
+               
+               
 
-                $(".form-message").load("includes/login.inc.php", {
-                    uname:uname,
-                    pass:pass,
-                    submit:submit
+                $(".form-message").load("includes/forgot_password.php", {
+          
+                  email:email,
+                  submit:submit,
+           
                 })
-            })
-
+            });
         })
-    </script>      
+
+     
+    </script>
+
+ 
 </head>
 <body>
     <div class="contain">
@@ -134,40 +142,30 @@ padding: 20px;
         <div class="right">
             
             <div class=" glass text-center ">
-            <h2 class="mb-3" style="color:whitesmoke">LOGIN</h2>
-            <form action="includes/sign_up.php" method="post">
+             
+            <h3 class=" mb-3  " style="color:whitesmoke">FORGOT PASSWORD</h3>
+        
+            <form action="verify.php" method="post">
 
-           
-
+    
 <div class="col">
 
 <div class="form-floating mb-3">
-<input type="text" class="form-control" id="unamelogin" placeholder="name@example.com" name="uname">
-<label for="email">Username</label>
+<input type="email" class="form-control" id="email" placeholder="name@example.com" name="email">
+<label for="email">Enter your email</label>
 </div>
 
 </div>
-<div class="col">
-
-<div class="form-floating mb-3">
-<input type="password" class="form-control" id="passlogin" placeholder="name@example.com" name="pass">
-<label for="pass">Password</label>
-</div>
-
-</div>
-
-
-
 
 <div class="col">
 
 
-<button type="submit" class="btn btn-danger px-4 mb-3" id="btnlogin"> LOGIN</button><br>
+</div>
 
 
-<a href="forgot_password.php">Forgot password?</a>
+<div class="col">
 
-<p class="text-white">Doesn't have an account? </p><a href="register.php" class="btn btn-primary">Register here</a>
+<button type="submit" class="btn btn-danger px-4" id="submit" name="verify">SEND CODE</button>
 
 </div>
 
