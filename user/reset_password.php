@@ -152,9 +152,9 @@ padding: 20px;
 
         <div class="form-message"></div>
             
-            <div class=" glass text-center ">
+            <div class=" glass text-center bg-light ">
              
-            <h3 class=" mb-3  " style="color:whitesmoke">RESET PASSWORD</h3>
+            <h3 class=" mb-3  " >RESET PASSWORD</h3>
         
             <form >
 
@@ -162,7 +162,7 @@ padding: 20px;
 <div class="col">
 
 <div class="form-floating mb-3">
-<input type="password" class="form-control" id="pass" placeholder="name@example.com" name="pass">
+<input type="password" class="form-control shadow-sm" id="pass" placeholder="name@example.com" name="pass">
 <label for="pass">New Password</label>
 </div>
 
@@ -171,7 +171,7 @@ padding: 20px;
 <div class="col">
 
 <div class="form-floating mb-3">
-<input type="password" class="form-control" id="cpass" placeholder="name@example.com" name="cpass">
+<input type="password" class="form-control shadow-sm" id="cpass" placeholder="name@example.com" name="cpass">
 <label for="cpass">Confirm Password</label>
 </div>
 
@@ -180,7 +180,7 @@ padding: 20px;
 
 <div class="col">
 
-<button type="submit" class="btn btn-danger px-4" id="submit" name="submit">CONFIRM</button>
+<button type="submit" class="btn btn-danger px-4 w-100" id="submit" name="submit">CONFIRM</button>
 
 </div>
 

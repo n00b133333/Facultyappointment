@@ -28,6 +28,8 @@ exit();
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
 <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+<?php include 'includes/users_functions.php';?>
+<?php include '../db.php'; ?>
 </head>
 
 <body>

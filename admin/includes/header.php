@@ -24,6 +24,7 @@
 <body class="fixed-nav sticky-footer bg-light" id="page-top">
 
 <?php 
+session_start();
 
 if(isset($_GET['archived'])){
     echo "
@@ -33,6 +34,7 @@ if(isset($_GET['archived'])){
          title: 'Archived!',
          text: 'Account archived successfully!',
          icon: 'success',
+         confirmButtonColor: '#d9534f',
      
        }); 
        

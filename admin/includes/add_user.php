@@ -135,6 +135,7 @@ else{
         title: 'Success!',
         text: 'Congratulations, your account has been successfully created.',
         icon: 'success',
+        confirmButtonColor: '#d9534f',
     
       }); 
       let button = document.querySelectorAll('.swal2-confirm').forEach(a=>a.onclick =function (){

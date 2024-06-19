@@ -1,5 +1,5 @@
 <?php
-$page = "Users";
+$page = "Admins";
 include('includes/header.php'); ?>
 
 <?php include('includes/sidenavbar.php'); ?>
@@ -12,11 +12,9 @@ include('includes/header.php'); ?>
                 var fname = $("#fname").val();
                 var mname = $("#mname").val();
                 var lname = $("#lname").val();
-                var bday = $("#bday").val();
-                var gender = $("#gender").val();
+              
                 var email = $("#email").val();
-                var contact = $("#contact").val();
-                var address = $("#address").val();
+               
                 var uname = $("#uname").val();
                 var pass = $("#pass").val();
                 var cpass = $("#cpass").val();
@@ -27,11 +25,9 @@ include('includes/header.php'); ?>
                   fname:fname,
                   mname:mname,
                   lname:lname,
-                  bday:bday,
-                  gender:gender,
+                
                   email:email,
-                  contact:contact,
-                  address:address,
+                
                   uname:uname,
                   pass:pass,
                   cpass:cpass,
@@ -43,44 +39,6 @@ include('includes/header.php'); ?>
      
     </script>
 
-    <script>
-  $(document).ready(function () {
-    
-    $("form").submit(function (event) {
-      event.preventDefault();
-
-      var formData = new FormData();
-      formData.append("id", <?php echo $_GET['id'] ?>);
-      formData.append("fname", $("#fname").val());
-      formData.append("lname", $("#lname").val());
-      formData.append("midname", $("#midname").val());
-      formData.append("pic", $("#pic")[0].files[0]);
-      formData.append("gender", $("#gender").val());
-      formData.append("email", $("#email").val());
-      formData.append("bday", $("#bday").val());
-      formData.append("address", $("#address").val());
-      formData.append("pnum", $("#pnum").val());
-      formData.append("uname", $("#uname").val());
-      formData.append("pass", $("#pass").val());
-      formData.append("cpass", $("#cpass").val());
-      formData.append("submit", $("#submit").val());
-
-      $.ajax({
-        url: "includes/user_update.php",
-        type: "POST",
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function (response) {
-          $(".form-message").html(response);
-        },
-        error: function (error) {
-          console.log("Error: " + error);
-        },
-      });
-    });
-  });
-</script>
 
 <div class="row text-center mt-3 glass bg-white rounded shadow-lg">
     <div class="col bg-dark rounded p-2 mb-3">
@@ -89,7 +47,7 @@ include('includes/header.php'); ?>
   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12h4m-2 2v-4M4 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
 </svg>
 
-  Add user
+  Add admin
 </button>
 </div>
 <!-- Modal -->
@@ -97,13 +55,13 @@ include('includes/header.php'); ?>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Add user</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add admin</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="form-message"></div>
       <form action="" method="post">
       <div class="modal-body">
-        <?php include 'add_user.php' ?>
+        <?php include 'add_admin.php' ?>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -114,22 +72,22 @@ include('includes/header.php'); ?>
     </div>
   </div>
 </div>
-<table id="myTable" class="display col ">
+<table id="myTable" class="display col " style="min-width: 1000px;">
 
     <thead>
         <tr>
-            <th>Profile</th>
+            <th class="text-start">Profile</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Address</th>
-            <th>Contact Number</th>
+        
+            
             <th>Username</th>
             <th>Action</th>
-            <th>Status</th>
+      
         </tr>
     </thead>
     <tbody>
-    <?php userTable($conn) ?>
+    <?php adminTable($conn) ?>
     </tbody>
 </table>
 

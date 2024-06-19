@@ -2,7 +2,7 @@
     <a href="/" class="d-flex text-center align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
     <div class="dropdown text-center">
         <a href="#" class="w-full align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="../uploads/<?php echo userinfo($conn, $_SESSION['faculty_ID'])['profile']?>" alt="" width="80" height="80" class="rounded-circle me-2"><br>
+            <img src="https://github.com/mdo.png" alt="" width="80" height="80" class="rounded-circle me-2"><br>
             <strong  style=" font-size:25px; ">Faculty</strong>
         </a>
         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
@@ -99,7 +99,7 @@
           
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="../uploads/<?php echo userinfo($conn, $_SESSION['faculty_ID'])['profile']?>" alt="" width="32" height="32" class="rounded-circle me-2">
+                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
                         Faculty
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

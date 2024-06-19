@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign in</title>
+    <title>TUP Faculty Appointment Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   
@@ -133,8 +133,9 @@ padding: 20px;
         </div>
         <div class="right">
             
-            <div class=" glass text-center ">
-            <h2 class="mb-3" style="color:whitesmoke">LOGIN</h2>
+            <div class=" glass text-center bg-light shadow-lg">
+            <h2 class="mb-3 text-dark" >LOGIN</h2>
+            <p>Login to your account</p>
             <form action="includes/sign_up.php" method="post">
 
            
@@ -142,7 +143,7 @@ padding: 20px;
 <div class="col">
 
 <div class="form-floating mb-3">
-<input type="text" class="form-control" id="unamelogin" placeholder="name@example.com" name="uname">
+<input type="text" class="form-control shadow-sm" id="unamelogin" placeholder="name@example.com" name="uname">
 <label for="email">Username</label>
 </div>
 
@@ -150,7 +151,7 @@ padding: 20px;
 <div class="col">
 
 <div class="form-floating mb-3">
-<input type="password" class="form-control" id="passlogin" placeholder="name@example.com" name="pass">
+<input type="password" class="form-control shadow-sm" id="passlogin" placeholder="name@example.com" name="pass">
 <label for="pass">Password</label>
 </div>
 
@@ -162,12 +163,15 @@ padding: 20px;
 <div class="col">
 
 
-<button type="submit" class="btn btn-danger px-4 mb-3" id="btnlogin"> LOGIN</button><br>
+<button type="submit" class="btn btn-danger px-4 mb-3 w-100" id="btnlogin"> LOGIN</button><br>
 
+<div class="text-start">
+<a href="forgot_password.php" class="nav-link text-secondary fw-bold" >Forgot password?</a>
+</div>
 
-<a href="forgot_password.php">Forgot password?</a>
+<hr>
 
-<p class="text-white">Doesn't have an account? </p><a href="register.php" class="btn btn-primary">Register here</a>
+<p class="text-dark d-inline-flex">Doesn't have an account? &nbsp; <a href="register.php" class="text-secondary fw-bold nav-link">Register here</a></p>
 
 </div>
 

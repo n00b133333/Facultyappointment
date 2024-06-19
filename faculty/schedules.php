@@ -1,5 +1,5 @@
 <?php
-$page = "Dashboard";
+$page = "Schedules";
 include('includes/header.php'); ?>
 
 <?php require_once('../db.php') ?>
