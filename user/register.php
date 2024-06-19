@@ -35,8 +35,8 @@
         }
 
         .form-message {
-            position: fixed;
-            top: 20px;
+            position: relative;
+            top: 30px;
             left: 50%;
             transform: translateX(-50%);
          
@@ -44,6 +44,8 @@
             padding: 10px;
             border-radius: 5px;
             z-index: 1000;
+            margin-bottom: 10px;
+            
         }
         
         .glass{ 
@@ -63,7 +65,7 @@ padding: 20px;
             margin-bottom: 1.5rem;
         }
 
-        .form-control,.form-select {
+        .form-control shadow-sm,.form-select {
             border: none;
             border-bottom: 2px solid #ccc;
             border-radius: 0;
@@ -74,14 +76,14 @@ padding: 20px;
             color: #495057;
         }
 
-        .form-control:focus,.form-select:focus {
+        .form-control shadow-sm:focus,.form-select:focus {
             outline: none;
             box-shadow: none;
             border-bottom-color: #007bff;
         }
 
-        .form-control:focus + label,
-        .form-control:not(:placeholder-shown) + label, .form-select:focus + label,
+        .form-control shadow-sm:focus + label,
+        .form-control shadow-sm:not(:placeholder-shown) + label, .form-select:focus + label,
         .form-select:not(:placeholder-shown) + label {
             transform: translateY(-1.5rem);
             font-size: 0.75rem;
@@ -99,7 +101,7 @@ padding: 20px;
         }
 
         /* Prevent showing placeholder text */
-        /* .form-control::placeholder,.form-select::placeholder {
+        /* .form-control shadow-sm::placeholder,.form-select::placeholder {
             color: transparent;
         }  */
     </style>
@@ -150,16 +152,16 @@ padding: 20px;
           
         </div>
         <div class="right">
-            
-            <div class=" glass text-center ">
-            <h2 class="mb-3" style="color:whitesmoke">REGISTER ACCOUNT</h2>
+        <div class="form-message "></div>
+            <div class=" glass text-center bg-light">
+            <h2 class="mb-3" >REGISTER ACCOUNT</h2>
             <form action="includes/sign_up.php" method="post">
 
             <div class="row gap-3">
                 <div class="col">
 
                 <div class="form-floating mb-3">
-  <input type="text" class="form-control" id="fname" placeholder="name@example.com" name="fname">
+  <input type="text" class="form-control shadow-sm" id="fname" placeholder="name@example.com" name="fname">
   <label for="fname">First Name</label>
 </div>
 
@@ -168,7 +170,7 @@ padding: 20px;
                 <div class="col">
 
 <div class="form-floating mb-3">
-<input type="text" class="form-control" id="mname" placeholder="name@example.com" name="mname">
+<input type="text" class="form-control shadow-sm" id="mname" placeholder="name@example.com" name="mname">
 <label for="mname">Middle Name</label>
 </div>
 
@@ -177,7 +179,7 @@ padding: 20px;
 <div class="col">
 
 <div class="form-floating mb-3">
-<input type="text" class="form-control" id="lname" placeholder="name@example.com" name="lname">
+<input type="text" class="form-control shadow-sm" id="lname" placeholder="name@example.com" name="lname">
 <label for="lname">Last Name</label>
 </div>
 
@@ -187,7 +189,7 @@ padding: 20px;
             <div class="col">
 
 <div class="form-floating mb-3">
-<input type="text" class="form-control" id="address" placeholder="name@example.com" name="address">
+<input type="text" class="form-control shadow-sm" id="address" placeholder="name@example.com" name="address">
 <label for="address">Address</label>
 </div>
 
@@ -197,7 +199,7 @@ padding: 20px;
 <div class="col">
 
 <div class="form-floating mb-3">
-<input type="text" class="form-control" id="contact" placeholder="name@example.com" name="cnumber">
+<input type="text" class="form-control shadow-sm" id="contact" placeholder="name@example.com" name="cnumber">
 <label for="contact">Contact Number</label>
 </div>
 
@@ -206,7 +208,7 @@ padding: 20px;
 <div class="col">
 
 <div class="form-floating">
-  <select class="form-select" id="gender" aria-label="Floating label select example" name="gender">
+  <select class="form-select shadow-sm" id="gender" aria-label="Floating label select example" name="gender">
 
     <!-- <option value="" disabled selected hidden>Gender</option> -->
 
@@ -224,7 +226,7 @@ padding: 20px;
 <div class="col">
 
 <div class="form-floating mb-3">
-<input type="date" class="form-control" id="bday" placeholder="name@example.com" name="bday">
+<input type="date" class="form-control shadow-sm" id="bday" placeholder="name@example.com" name="bday">
 <label for="bday">Birth Date</label>
 </div>
 
@@ -233,7 +235,7 @@ padding: 20px;
 <div class="col">
 
 <div class="form-floating mb-3">
-<input type="email" class="form-control" id="email" placeholder="name@example.com" name="email">
+<input type="email" class="form-control shadow-sm" id="email" placeholder="name@example.com" name="email">
 <label for="email">Email</label>
 </div>
 
@@ -245,7 +247,7 @@ padding: 20px;
 <div class="col">
 
 <div class="form-floating mb-3">
-<input type="text" class="form-control" id="uname" placeholder="name@example.com" name="uname">
+<input type="text" class="form-control shadow-sm" id="uname" placeholder="name@example.com" name="uname">
 <label for="email">Username</label>
 </div>
 
@@ -253,7 +255,7 @@ padding: 20px;
 <div class="col">
 
 <div class="form-floating mb-3">
-<input type="password" class="form-control" id="pass" placeholder="name@example.com" name="pass">
+<input type="password" class="form-control shadow-sm" id="pass" placeholder="name@example.com" name="pass">
 <label for="pass">Password</label>
 </div>
 
@@ -262,7 +264,7 @@ padding: 20px;
 <div class="col">
 
 <div class="form-floating mb-3">
-<input type="password" class="form-control" id="cpass" placeholder="name@example.com" name="cpass">
+<input type="password" class="form-control shadow-sm" id="cpass" placeholder="name@example.com" name="cpass">
 <label for="cpass">Confirm Password</label>
 </div>
 
@@ -271,9 +273,9 @@ padding: 20px;
 
 <div class="col">
 
-<button type="submit" class="btn btn-danger px-4 mb-3" id="submit"> REGISTER</button>
+<button type="submit" class="btn btn-danger px-4 mb-3" id="submit"> REGISTER</button><br>
 
-<p class="text-white">Already have an account? <a href="index.php" class="btn btn-primary">Login here</a></p>
+<p class="text-dark d-inline-flex">Already have an account? &nbsp; <a href="index.php" class="text-secondary fw-bold nav-link">Login here</a></p>
 
 </div>
 
@@ -286,6 +288,6 @@ padding: 20px;
             </div>
         </div>
     </div>
-    <div class="form-message "></div>
+
 </body>
 </html>

@@ -141,9 +141,9 @@ padding: 20px;
         </div>
         <div class="right">
             
-            <div class=" glass text-center ">
+            <div class=" glass text-center bg-light">
              
-            <h3 class=" mb-3  " style="color:whitesmoke">FORGOT PASSWORD</h3>
+            <h3 class=" mb-3  ">FORGOT PASSWORD</h3>
         
             <form action="verify.php" method="post">
 
@@ -151,7 +151,7 @@ padding: 20px;
 <div class="col">
 
 <div class="form-floating mb-3">
-<input type="email" class="form-control" id="email" placeholder="name@example.com" name="email">
+<input type="email" class="form-control shadow-sm" id="email" placeholder="name@example.com" name="email">
 <label for="email">Enter your email</label>
 </div>
 
@@ -165,7 +165,7 @@ padding: 20px;
 
 <div class="col">
 
-<button type="submit" class="btn btn-danger px-4" id="submit" name="verify">SEND CODE</button>
+<button type="submit" class="btn btn-danger px-4 w-100" id="submit" name="verify">SEND CODE</button>
 
 </div>
 

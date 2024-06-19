@@ -193,3 +193,18 @@ function usernameexists($conn, $email){
             return $results;
         }
     }
+
+    
+function userinfo($conn, $id){
+    $sql="SELECT * FROM faculty WHERE faculty_ID = '$id'";
+    
+            $resultData = mysqli_query($conn,$sql);
+    
+        if($row = mysqli_fetch_assoc($resultData)){
+            return $row;
+        }
+        else{
+            $results = false;
+            return $results;
+        }
+    }

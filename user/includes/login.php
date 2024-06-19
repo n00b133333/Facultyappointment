@@ -61,6 +61,7 @@ if(isset($_POST['submit'])){
                 title: 'Unverified Account!',
                 text: ' Please verify your account.',
                 icon: 'error',
+                confirmButtonColor: '#d9534f',
             
               }); 
               let button = document.querySelectorAll('.swal2-confirm').forEach(a=>a.onclick =function (){

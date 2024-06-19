@@ -62,7 +62,7 @@ if(isset($_POST['submit'])){
         $_SESSION["admin_mname"] = $userexist['mname'];
         $_SESSION["admin_lname"] = $userexist['lname'];
 
-        echo "<script>  window.location.href = 'home.php'; </script>";
+        echo "<script>  window.location.href = 'dashboard.php'; </script>";
         exit();
 
 

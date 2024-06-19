@@ -61,6 +61,7 @@ else{
          title: 'Success!',
          text: 'Your password has been successfully reset! You can now log in with your new password.',
          icon: 'success',
+         confirmButtonColor: '#d9534f',
      
        }); 
        let button = document.querySelectorAll('.swal2-confirm').forEach(a=>a.onclick =function (){

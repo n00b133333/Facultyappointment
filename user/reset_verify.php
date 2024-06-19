@@ -120,9 +120,9 @@ padding: 20px;
         </div>
         <div class="right">
             
-            <div class=" glass text-center ">
+            <div class=" glass text-center bg-light">
              
-            <h3 class=" mb-3  " style="color:whitesmoke">Enter OTP</h3>
+            <h3 class=" mb-3 " >Enter OTP</h3>
         
             <form action="reset_verify.php?email=<?php echo $_GET["email"]?>" method="post">
 
@@ -132,7 +132,7 @@ padding: 20px;
 <div class="col">
 
 <div class="form-floating mb-3">
-<input type="text" class="form-control" id="otp" placeholder="name@example.com" name="otp">
+<input type="text" class="form-control shadow-sm" id="otp" placeholder="name@example.com" name="otp">
 <label for="otp">OTP</label>
 </div>
 
@@ -141,7 +141,7 @@ padding: 20px;
 
 <div class="col">
 
-<button type="submit" class="btn btn-danger px-4" id="submit" name="verify">VERIFY</button>
+<button type="submit" class="btn btn-danger px-4 w-100" id="submit" name="verify">VERIFY</button>
 
 </div>
 

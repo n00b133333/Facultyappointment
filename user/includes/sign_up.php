@@ -144,6 +144,7 @@ else{
                 title: 'Success!',
                 text: 'User registered successfully! An OTP has been sent to your email.',
                 icon: 'success',
+                confirmButtonColor: '#d9534f',
             
               }); 
               let button = document.querySelectorAll('.swal2-confirm').forEach(a=>a.onclick =function (){

@@ -131,8 +131,9 @@ padding: 20px;
         </div>
         <div class="right">
             
-            <div class=" glass text-center ">
-            <h2 class="mb-3" style="color:whitesmoke">Faculty Login</h2>
+            <div class=" glass text-center bg-light ">
+            <h2 class="mb-3" >Faculty Login</h2>
+            <p>Login to your account</p>
             <form  method="post">
 
            
@@ -159,8 +160,9 @@ padding: 20px;
 
 <div class="col">
 
-<button type="submit" class="btn btn-danger px-4 mb-3" id="btnlogin"> LOGIN</button><br>
-<a href="forgot_password.php" class="mt-2">Forgot password?</a>
+<button type="submit" class="btn btn-danger px-4 mb-3 w-100" id="btnlogin"> LOGIN</button><br>
+ <a href="forgot_password.php" class="mt-2 nav-link text-secondary fw-bold">Forgot password?</a></div>
+
 
 
 

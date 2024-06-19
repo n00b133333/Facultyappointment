@@ -68,12 +68,12 @@ if(isset($_POST['submit'])){
 
         session_start();
         $_SESSION["faculty_ID"] = $userexist['faculty_ID'];
-        $_SESSION["faculty_email"] = $userexist['faculty_email'];
-        $_SESSION["faculty_fname"] = $userexist['faculty_fname'];
-        $_SESSION["faculty_mname"] = $userexist['faculty_mname'];
-        $_SESSION["faculty_lname"] = $userexist['faculty_lname'];
+        $_SESSION["faculty_email"] = $userexist['email'];
+        $_SESSION["faculty_fname"] = $userexist['fname'];
+        $_SESSION["faculty_mname"] = $userexist['mname'];
+        $_SESSION["faculty_lname"] = $userexist['lname'];
 
-        echo "<script>  window.location.href = 'home.php'; </script>";
+        echo "<script>  window.location.href = 'dashboard.php'; </script>";
         exit();
 
 
