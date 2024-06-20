@@ -1,10 +1,10 @@
 <?php
 session_start();
 include "../../db.php";
-include "faculty_functions.php";
+include "users_functions.php";
 
 if(isset($_POST['submit'])){
-    echo "hi";
+   
     $appointmentName = $_POST['appointmentName'];
     $appointmentDate = $_POST['appointmentDate'];
     $startTime = $_POST['startTime'];
@@ -53,9 +53,10 @@ if(isset($_POST['submit'])){
       </div>";
         $errorTime = true;
     } else {
-        $sql = "INSERT INTO appointments (appointment_name, appointment_date, start_time, end_time, notes, faculty_ID) VALUES (?, ?, ?, ?, ?, ?)";
+        $uid = $_SESSION['user_ID'];
+        $sql = "INSERT INTO appointments (appointment_name, user_ID, appointment_date, start_time, end_time, notes, faculty_ID) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssi", $appointmentName, $appointmentDate, $startTime, $endTime, $notes, $faculty);
+        $stmt->bind_param("sissssi", $appointmentName, $uid, $appointmentDate, $startTime, $endTime, $notes, $faculty);
 
         if ($stmt->execute()) {
             echo "

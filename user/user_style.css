@@ -1,9 +1,69 @@
-.card-registration .select-input.form-control[readonly]:not([disabled]) {
-    font-size: 1rem;
-    line-height: 2.15;
-    padding-left: .75em;
-    padding-right: .75em;
+body{
+    font-family: 'Roboto';
+}
+
+.main-content {
+
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;    /* Centers vertically */
+    background-color: #f4f4f4;
+    padding: 20px;
+
+    /* height: 100vh; 
+    background-image: url('../img/TUP.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;  */
+  
+
+
+}
+
+@media (min-width: 990px) {
+    .main-content {
+    width: 82.5%!important;
+    margin-left:280px;
+    
+
     }
-    .card-registration .select-arrow {
-    top: 13px;
+}
+
+@media (max-width: 600px) {
+    .main-content {
+        flex-direction: column;
+    
+
     }
+    .card{
+        width: 100%;
+    }
+}
+
+#sidebar{
+    position: fixed;
+}
+
+.centered-div {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.dt-input,.dt-paging {
+ 
+    margin-right: 50px;
+}
+
+/* .glass{ */
+    /* From https://css.glass
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+padding: 20px;
+} */

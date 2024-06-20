@@ -82,7 +82,62 @@ function schedules($conn){
       </div>";
   }
 }
+function manageSchedules($conn) {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $id = intval($_POST['id']);
+        $action = $_POST['action'];
 
+        if ($action == 'approve') {
+            $sql = "UPDATE appointments SET status = 1 WHERE id = $id";
+        } elseif ($action == 'decline') {
+            $sql = "UPDATE appointments SET status = 2 WHERE id = $id";
+        }
+
+        if (mysqli_query($conn, $sql)) {
+            header('Location: ' . $_SERVER['PHP_SELF']); // Redirect to the same page
+            exit;
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
+    }
+
+    // Display the schedule
+    $sql = "SELECT * FROM appointments";
+    $result = mysqli_query($conn, $sql);
+
+    while($row = mysqli_fetch_object($result)){
+        echo "
+        <tr>
+            <td>{$row->appointment_name}</td>
+            <td>{$row->appointment_date}</td>
+            <td>{$row->start_time}</td>
+            <td>{$row->end_time}</td>
+            <td>
+                <form action='' method='post' style='display:inline;'>
+                    <input type='hidden' name='id' value='{$row->id}'>
+                    <input type='hidden' name='action' value='approve'>
+                    <button type='submit' class='btn btn-success btn-sm'>Approve</button>
+                </form>
+                <form action='' method='post' style='display:inline;'>
+                    <input type='hidden' name='id' value='{$row->id}'>
+                    <input type='hidden' name='action' value='decline'>
+                    <button type='submit' class='btn btn-danger btn-sm'>Decline</button>
+                </form>
+            </td>
+            <td>";
+        
+        if ($row->status == 0) {
+            echo "Pending";
+        } elseif ($row->status == 1) {
+            echo "Approved";
+        } else {
+            echo "Declined";
+        }
+
+        echo "</td>
+        </tr>";
+    }
+}
 
 function login($uname, $pass, $conn)
 {
