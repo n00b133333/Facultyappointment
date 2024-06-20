@@ -55,7 +55,7 @@
 
 
   <div class="right-content">
-    <h1 class="m-4">  My Profile</h1>
+    <h3 class="m-4">Profile</h3>
 
 
     
@@ -129,7 +129,7 @@
 
   
 <div class="text-start">
-<button class="btn btn-danger mb-3">Change password</button>
+<a href="change_password.php" class="btn btn-danger mb-3">Change password</a>
 </div>
    
   

@@ -9,10 +9,9 @@ if(isset($_POST['submit'])){
 
     $errorEmpty = false;
     $errorUname = false;
-    $errorPass = false;
     $errorUnameExists = false;
     $errorIncPass = false;
-    $errorVerify = false;
+    $errorPass =false;
 
 
     if(empty($uname) || empty($pass)){
@@ -39,15 +38,15 @@ if(isset($_POST['submit'])){
       </div>";
 
     }
-    // else if(!password_verify($pass, usernameexists($conn, $uname)['password'])){
+    else if(!password_verify($pass, usernameexists($conn, $uname)['password'])){
 
-    //     $errorIncPass = true;
+        $errorIncPass = true;
 
-    //     echo "<div class='alert alert-danger alert-dismissible fade show animate__animated animate__fadeOut' role='alert'>
-    //     <strong>Incorrect Password!</strong><br> Please make sure you entered a correct password.
-    //     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-    //   </div>";
-    // }
+        echo "<div class='alert alert-danger alert-dismissible fade show animate__animated animate__fadeOut' role='alert'>
+        <strong>Incorrect Username or Password!</strong><br> Please make sure you entered the correct credentials.
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+      </div>";
+    }
 
    
     else{
@@ -78,28 +77,32 @@ else{
 
 <script>
 
-$("#unamelogin,#passlogin,#btnlogin").removeClass("is-invalid");
+$("#username,#password,#btnlogin").removeClass("is-invalid");
 var errorEmpty = "<?php echo $errorEmpty; ?>";
 var errorUname = "<?php echo $errorUname; ?>";
-
 var errorPass = "<?php echo $errorPass; ?>";
+
+
 var errorUnameExists = "<?php echo $errorUnameExists; ?>";
 var errorIncPass = "<?php echo $errorIncPass; ?>";
 
 if(errorEmpty == true){
     if(errorUname == true){
-        $("#unamelogin").addClass("is-invalid");
+        $("#username").addClass("is-invalid");
     }
     if(errorPass== true){
-        $("#passlogin").addClass("is-invalid");
+        $("#password").addClass("is-invalid");
     }
 }
 
+
+
 else if(errorUnameExists == true){
-    $("#unamelogin").addClass("is-invalid");
+    $("#username").addClass("is-invalid");
 }
 else if(errorIncPass == true){
-    $("#passlogin").addClass("is-invalid");
+    $("#username").addClass("is-invalid");
+    $("#password").addClass("is-invalid");
 }
 
 

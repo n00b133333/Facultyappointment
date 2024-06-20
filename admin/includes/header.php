@@ -1,3 +1,13 @@
+<?php
+session_start();
+if(!isset($_SESSION['admin_ID'])){
+    header("Location: index.php");
+    exit();
+    
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +34,8 @@
 <body class="fixed-nav sticky-footer bg-light" id="page-top">
 
 <?php 
-session_start();
+
+
 
 if(isset($_GET['archived'])){
     echo "

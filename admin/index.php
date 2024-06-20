@@ -19,6 +19,22 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
 <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+
+<style>
+      .form-message {
+            position: fixed;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+         
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+            margin-bottom: 10px;
+            
+        }
+</style>
     
 
     <script>
@@ -67,7 +83,7 @@
                                 <input type="password" class="form-control" id="password" name="password" >
                             </div>
                             <div class="text-center">
-                            <button type="submit" id="btnlogin" class="btn btn-danger mt-2" style="width: 100%;">Login</button>
+                            <button type="submit" id="btnlogin" class="btn btn-danger mt-3" style="width: 100%;">Login</button>
                             </div>
                         </form>
                     </div>

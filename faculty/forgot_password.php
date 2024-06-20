@@ -141,7 +141,7 @@ padding: 20px;
         </div>
         <div class="right">
             
-            <div class=" glass text-center ">
+            <div class=" glass text-center bg-light">
              
             <h3 class=" mb-3  " >FORGOT PASSWORD</h3>
         
