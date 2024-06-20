@@ -47,11 +47,11 @@ if(isset($_POST['submit'])){
        
          }
          else{
-             $profilepic = editfacultyprofile($conn,$id)->profile;
+             $profilepic = userinfo($conn,$id)->profile;
          }
      }
      else{
-        $profilepic = editfacultyprofile($conn,$id)->profile;
+        $profilepic = userinfo($conn,$id)->profile;
      }
      $userid = $id;
      $sql="UPDATE admin SET fname = '$fname',

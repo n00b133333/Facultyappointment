@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2024 at 05:34 AM
+-- Generation Time: Jun 20, 2024 at 10:29 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -32,6 +32,7 @@ CREATE TABLE `admin` (
   `fname` varchar(255) NOT NULL,
   `mname` varchar(100) NOT NULL,
   `lname` varchar(255) NOT NULL,
+  `profile` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
@@ -41,8 +42,8 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`admin_ID`, `fname`, `mname`, `lname`, `username`, `email`, `password`) VALUES
-(1, 'Jersey', '', 'Franes', 'Admin', 'admin@gmail.com', 'Admin123');
+INSERT INTO `admin` (`admin_ID`, `fname`, `mname`, `lname`, `profile`, `username`, `email`, `password`) VALUES
+(1, 'Jersey', 'hgytds', 'Franes', '6673a5f02f2831.28127971.png', 'Admin', 'admin@gmail.com', '$2y$10$dXlero0IG8qZllvN.XZ.Wuw2vo/ulV4iWk/2Rg/aRYbU4MANSvU2m');
 
 -- --------------------------------------------------------
 
@@ -111,7 +112,7 @@ CREATE TABLE `faculty` (
 --
 
 INSERT INTO `faculty` (`faculty_ID`, `fname`, `mname`, `lname`, `address`, `contact_number`, `gender`, `bday`, `profile`, `email`, `pass`, `archive`, `reset_otp`) VALUES
-(4, 'bry', 'bry', 'bry', 'bry', '09878654567', 'Male', '07/03/2002', 'user.png', 'sadasdd@gmail.com', 'asd123', 0, 11111);
+(4, 'bry', 'bry', 'bry', 'bry', '09878654567', 'Male', '07/03/2002', 'user.png', 'sadasdd@gmail.com', '$2y$10$q2..8t0Hf90up0iUWnM1deGmONUHIUOI.K4fMlAxZQYEwd0zcSvT2', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -250,7 +251,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `admin_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `appointments`

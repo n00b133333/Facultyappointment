@@ -1,5 +1,5 @@
 <?php
-$page = "Schedules";
+$page = "Dashboard";
 include('includes/header.php'); ?>
 
 <?php require_once('../db.php') ?>
@@ -14,9 +14,9 @@ include('includes/header.php'); ?>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="../fullcalendar/lib/main.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script src="../fullcalendar/lib/main.min.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -90,42 +90,6 @@ include('includes/header.php'); ?>
                     <div class="col-md-9" >
                         <div id="calendar"></div>
                     </div>
-                    <!-- <div class="col-md-3">
-                        <div class="card rounded-0 shadow">
-                            <div class="card-header bg-gradient bg-primary text-light">
-                                <h5 class="card-title">Schedule Form</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="container-fluid">
-                                    <form action="save_schedule.php" method="post" id="schedule-form">
-                                        <input type="hidden" name="id" value="">
-                                        <div class="form-group mb-2">
-                                            <label for="title" class="control-label">Title</label>
-                                            <input type="text" class="form-control form-control-sm rounded-0" name="title" id="title" required>
-                                        </div>
-                                        <div class="form-group mb-2">
-                                            <label for="description" class="control-label">Description</label>
-                                            <textarea rows="3" class="form-control form-control-sm rounded-0" name="description" id="description" required></textarea>
-                                        </div>
-                                        <div class="form-group mb-2">
-                                            <label for="start_datetime" class="control-label">Start</label>
-                                            <input type="datetime-local" class="form-control form-control-sm rounded-0" name="start_datetime" id="start_datetime" required>
-                                        </div>
-                                        <div class="form-group mb-2">
-                                            <label for="end_datetime" class="control-label">End</label>
-                                            <input type="datetime-local" class="form-control form-control-sm rounded-0" name="end_datetime" id="end_datetime" required>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="text-center">
-                                    <button class="btn btn-primary btn-sm rounded-0" type="submit" form="schedule-form"><i class="fa fa-save"></i> Save</button>
-                                    <button class="btn btn-default border btn-sm rounded-0" type="reset" form="schedule-form"><i class="fa fa-reset"></i> Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
             <!-- Event Details Modal -->
@@ -165,12 +129,16 @@ include('includes/header.php'); ?>
     </div>
  
 <?php 
-$schedules = $conn->query("SELECT * FROM `schedule_list`");
-$sched_res = [];
-foreach($schedules->fetch_all(MYSQLI_ASSOC) as $row){
-    $row['sdate'] = date("F d, Y h:i A",strtotime($row['start_datetime']));
-    $row['edate'] = date("F d, Y h:i A",strtotime($row['end_datetime']));
-    $sched_res[$row['id']] = $row;
+$appointments = $conn->query("SELECT * FROM `appointments`");
+$app_res = [];
+foreach($appointments->fetch_all(MYSQLI_ASSOC) as $row){
+    $start_datetime = $row['appointment_date'] . ' ' . $row['start_time'];
+    $end_datetime = $row['appointment_date'] . ' ' . $row['end_time'];
+    $row['sdate'] = date("F d, Y h:i A",strtotime($start_datetime));
+    $row['edate'] = date("F d, Y h:i A",strtotime($end_datetime));
+    $row['start_datetime'] = $start_datetime;
+    $row['end_datetime'] = $end_datetime;
+    $app_res[$row['id']] = $row;
 }
 ?>
 <?php 
@@ -178,7 +146,7 @@ if(isset($conn)) $conn->close();
 ?>
 </body>
 <script>
-    var scheds = $.parseJSON('<?= json_encode($sched_res) ?>')
+    var scheds = $.parseJSON('<?= json_encode($app_res) ?>')
 </script>
 <script src="../js/script.js"></script>
  
