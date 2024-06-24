@@ -73,7 +73,7 @@ if(isset($_POST['submit'])){
         $_SESSION["faculty_mname"] = $userexist['mname'];
         $_SESSION["faculty_lname"] = $userexist['lname'];
 
-        echo "<script>  window.location.href = 'dashboard.php'; </script>";
+        echo "<script>  window.location.href = 'schedules.php'; </script>";
         exit();
 
 

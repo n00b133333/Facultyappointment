@@ -24,25 +24,22 @@ $(function() {
     var d = date.getDate(),
         m = date.getMonth(),
         y = date.getFullYear();
-    
+
     calendar = new Calendar(document.getElementById('calendar'), {
         headerToolbar: {
             left: 'prev,next today',
             right: 'dayGridMonth,dayGridWeek,dayGridDay',
             center: 'title',
         },
-        
         selectable: true,
         themeSystem: 'bootstrap',
         events: events,
-        
         eventClick: function(info) {
             var _details = $('#event-details-modal');
             var id = info.event.id;
             if (!!scheds[id]) {
                 _details.find('#title').text(scheds[id].title);
                 _details.find('#description').text(scheds[id].notes);
-                _details.find('#room').text(scheds[id].room);
                 _details.find('#start').text(scheds[id].adate);
                 _details.find('#faculty').text(scheds[id].faculty);
                 _details.find('#end').text(scheds[id].sdate+" - "+scheds[id].edate);

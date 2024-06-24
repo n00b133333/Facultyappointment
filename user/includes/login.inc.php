@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
         $errorIncPass = true;
 
         echo "<div class='alert alert-danger alert-dismissible fade show animate__animated animate__fadeOut' role='alert'>
-        <strong>Incorrect Password!</strong><br> Please make sure you entered a correct password.
+        <strong>Incorrect Password or Email!</strong><br> Please make sure you entered the correct credentials.
         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
       </div>";
     }
@@ -83,7 +83,7 @@ if(isset($_POST['submit'])){
         $_SESSION["u_mname"] = $userexist['u_mname'];
         $_SESSION["u_lname"] = $userexist['u_lname'];
 
-        echo "<script>  window.location.href = 'home.php'; </script>";
+        echo "<script>  window.location.href = 'schedule.php'; </script>";
         exit();
 
 
@@ -121,6 +121,7 @@ else if(errorUnameExists == true){
 }
 else if(errorIncPass == true){
     $("#passlogin").addClass("is-invalid");
+    $("#unamelogin").addClass("is-invalid");
 }
 
 

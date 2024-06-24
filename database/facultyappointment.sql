@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2024 at 10:29 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Jun 24, 2024 at 02:44 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_ID`, `fname`, `mname`, `lname`, `profile`, `username`, `email`, `password`) VALUES
-(1, 'Jersey', 'hgytds', 'Franes', '6673a5f02f2831.28127971.png', 'Admin', 'admin@gmail.com', '$2y$10$dXlero0IG8qZllvN.XZ.Wuw2vo/ulV4iWk/2Rg/aRYbU4MANSvU2m');
+(1, 'Jersey', 'hgytdsa', 'Franes', '6678ea23e9e016.77681906.jpg', 'Admin', 'admin@gmail.com', '$2y$10$TSJokOqXF2ruXVF34NPerOky47DW3zKbsj3RPkOMPJcI85od3iUwO');
 
 -- --------------------------------------------------------
 
@@ -57,6 +57,7 @@ CREATE TABLE `appointments` (
   `faculty_ID` int(11) NOT NULL,
   `appointment_name` varchar(255) NOT NULL,
   `notes` text NOT NULL,
+  `meeting_room` varchar(255) NOT NULL,
   `appointment_date` date NOT NULL,
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
@@ -68,8 +69,15 @@ CREATE TABLE `appointments` (
 -- Dumping data for table `appointments`
 --
 
-INSERT INTO `appointments` (`id`, `user_ID`, `faculty_ID`, `appointment_name`, `notes`, `appointment_date`, `start_time`, `end_time`, `created_at`, `status`) VALUES
-(5, 22, 4, 'asda', 'sdadas', '2024-06-20', '11:31:00', '12:32:00', '2024-06-20 03:31:21', 0);
+INSERT INTO `appointments` (`id`, `user_ID`, `faculty_ID`, `appointment_name`, `notes`, `meeting_room`, `appointment_date`, `start_time`, `end_time`, `created_at`, `status`) VALUES
+(24, 23, 5, 'Meeting', 'dasda', 'Office', '2024-06-23', '13:33:00', '14:33:00', '2024-06-23 05:33:13', 2),
+(25, 23, 5, 'Meeting', 'njbi', 'Office', '2024-06-23', '13:45:00', '14:46:00', '2024-06-23 05:45:37', 2),
+(26, 23, 5, 'Meeting', 'dsadsa', 'Office', '2024-06-23', '13:55:00', '14:56:00', '2024-06-23 05:56:04', 2),
+(27, 23, 5, 'Meeting', 'dawdaw', 'Office', '2024-06-23', '18:30:00', '19:31:00', '2024-06-23 10:30:32', 3),
+(28, 23, 5, 'Meeting', 'sdzcx', 'Office', '2024-06-23', '19:09:00', '20:09:00', '2024-06-23 11:09:16', 4),
+(29, 23, 5, 'Meeting', 'dsada', 'Office', '2024-06-24', '12:25:00', '13:25:00', '2024-06-24 04:25:12', 3),
+(30, 23, 5, 'Meeting', 'sadade', 'Office', '2024-06-24', '14:27:00', '15:28:00', '2024-06-24 04:25:58', 4),
+(31, 23, 6, 'Capstone', 'fdsfde', 'Office', '2024-06-24', '19:38:00', '20:39:00', '2024-06-24 11:39:10', 0);
 
 -- --------------------------------------------------------
 
@@ -78,12 +86,23 @@ INSERT INTO `appointments` (`id`, `user_ID`, `faculty_ID`, `appointment_name`, `
 --
 
 CREATE TABLE `declined_appointments` (
-  `d_ID` int(11) NOT NULL,
-  `id` int(11) NOT NULL,
-  `user_ID` int(11) NOT NULL,
-  `faculty_ID` int(11) NOT NULL,
-  `notes` text NOT NULL
+  `declined_ID` int(11) NOT NULL,
+  `appointment_id` int(11) NOT NULL,
+  `reason` varchar(255) NOT NULL,
+  `canceled_by` int(11) NOT NULL,
+  `date_declined` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `declined_appointments`
+--
+
+INSERT INTO `declined_appointments` (`declined_ID`, `appointment_id`, `reason`, `canceled_by`, `date_declined`) VALUES
+(11, 24, 'dsadas', 1, '2024-06-23 05:44:52'),
+(12, 25, 'ok', 2, '2024-06-23 05:47:13'),
+(13, 26, 'idontknow', 2, '2024-06-23 10:24:35'),
+(14, 27, 'wqfdfewe', 0, '2024-06-23 10:30:50'),
+(15, 29, 'dsadwew', 0, '2024-06-24 04:26:33');
 
 -- --------------------------------------------------------
 
@@ -112,7 +131,9 @@ CREATE TABLE `faculty` (
 --
 
 INSERT INTO `faculty` (`faculty_ID`, `fname`, `mname`, `lname`, `address`, `contact_number`, `gender`, `bday`, `profile`, `email`, `pass`, `archive`, `reset_otp`) VALUES
-(4, 'bry', 'bry', 'bry', 'bry', '09878654567', 'Male', '07/03/2002', 'user.png', 'sadasdd@gmail.com', '$2y$10$q2..8t0Hf90up0iUWnM1deGmONUHIUOI.K4fMlAxZQYEwd0zcSvT2', 0, 0);
+(4, 'bry', 'bry', 'bry', 'bry', '09878654567', 'Male', '07/03/2002', 'user.png', 'sadasdd@gmail.com', '$2y$10$q2..8t0Hf90up0iUWnM1deGmONUHIUOI.K4fMlAxZQYEwd0zcSvT2', 1, 0),
+(5, 'John Bryan', 'Resuello', 'Tisado', 'Brgy. Balaya , SCCP.', '09456387648', 'Male', '2024-06-23', 'user.png', 'johnbryantisado@gmail.com', '$2y$10$Nra688s8DeoBNBx06yW2Iu0UJKW9qguoBzbn8RHHfqoNphNME9PlW', 0, 0),
+(6, 'MA. Leonora Theresa', 'M.', 'Aguilar', 'Brgy. Balaya , SCCP.', '09456387648', 'Male', '2000-06-24', 'user.png', 'stodoroki575@gmail.com', '$2y$10$dArZOn/B1yaFFohYZcIk9uI0eHfLowo1dGI0FHytRjxUXEWKuyVL2', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -133,7 +154,7 @@ CREATE TABLE `schedule_list` (
 --
 
 INSERT INTO `schedule_list` (`id`, `title`, `description`, `start_datetime`, `end_datetime`) VALUES
-(1, 'sdgsg', 'sdgsdg', '2024-06-06 22:49:00', '2024-06-11 10:49:00'),
+(1, 'sdgsg', 'sdgsdg', '2024-06-21 09:49:00', '2024-06-21 10:49:00'),
 (2, 'meeting', 'fdsfsdf', '2024-06-06 13:00:00', '2024-06-08 14:00:00');
 
 -- --------------------------------------------------------
@@ -190,7 +211,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_ID`, `u_fname`, `u_mname`, `u_lname`, `address`, `contact_number`, `gender`, `u_username`, `u_email`, `u_pass`, `otp`, `status`, `profile`, `bday`, `archive`, `reset_otp`) VALUES
-(22, 'jake', 'asfa', 'asdad', 'fsdfsf', '09876789098', 'Male', 'asd123', 'admin@gmail.com', '$2y$10$xcdBODSoHyPiSREJq2MMUuAzH3GxpaVE6DyKtZuFqRN7bQZKWf.qO', 0, 1, 'user.png', '2024-06-06', 0, 0);
+(22, 'jake', 'asfa', 'asdad', 'fsdfsf', '09876789098', 'Male', 'asd123', 'admin@gmail.com', '$2y$10$xcdBODSoHyPiSREJq2MMUuAzH3GxpaVE6DyKtZuFqRN7bQZKWf.qO', 0, 1, 'user.png', '2024-06-06', 1, 0),
+(23, 'John Bryan', 'Resuello', 'Tisado', 'Brgy. Balaya , SCCP.', '09456387648', 'Male', 'Bry', 'johnbryantisado@gmail.com', '$2y$10$wZmRYSqXekg6UZ.76Pt2I.ZGAw/ncrdDnt6Us52ZTQ4brOZazr/Iu', 0, 1, '6678057f17c6e9.82744612.jpg', '2024-06-23', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -214,9 +236,7 @@ ALTER TABLE `appointments`
 -- Indexes for table `declined_appointments`
 --
 ALTER TABLE `declined_appointments`
-  ADD KEY `id` (`id`),
-  ADD KEY `faculty_ID` (`faculty_ID`),
-  ADD KEY `user_ID` (`user_ID`);
+  ADD PRIMARY KEY (`declined_ID`);
 
 --
 -- Indexes for table `faculty`
@@ -257,13 +277,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT for table `declined_appointments`
+--
+ALTER TABLE `declined_appointments`
+  MODIFY `declined_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `faculty_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `faculty_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `schedule_list`
@@ -275,7 +301,7 @@ ALTER TABLE `schedule_list`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
@@ -287,14 +313,6 @@ ALTER TABLE `users`
 ALTER TABLE `appointments`
   ADD CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`faculty_ID`) REFERENCES `faculty` (`faculty_ID`),
   ADD CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`user_ID`) REFERENCES `users` (`user_ID`);
-
---
--- Constraints for table `declined_appointments`
---
-ALTER TABLE `declined_appointments`
-  ADD CONSTRAINT `declined_appointments_ibfk_1` FOREIGN KEY (`id`) REFERENCES `appointments` (`id`),
-  ADD CONSTRAINT `declined_appointments_ibfk_2` FOREIGN KEY (`faculty_ID`) REFERENCES `faculty` (`faculty_ID`),
-  ADD CONSTRAINT `declined_appointments_ibfk_3` FOREIGN KEY (`user_ID`) REFERENCES `users` (`user_ID`);
 
 --
 -- Constraints for table `users`

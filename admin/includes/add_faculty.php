@@ -29,7 +29,7 @@ $errorbday = false;
 $erroremail = false;
 $errorcontact = false;
 $erroraddress = false;
-$erroruname = false;
+
 $errorpass = false;
 $errorcpass = false;
 $userExist = false;
@@ -66,9 +66,6 @@ if(empty($email)){
     $erroremail=true;
 }
 
-if(empty($uname)){
-    $erroruname=true;
-}
 
 if(empty($address)){
     $erroraddress=true;
@@ -105,10 +102,10 @@ else if(!is_numeric($contact) || strlen($contact)!=11){
     $errorContact = true;
 }
 
-else if(addusernameexists($conn, $uname)){
+else if(addemailexists($conn, $email)){
     $userExist = true;
     echo "<div class='alert alert-danger alert-dismissible fade show animate__animated animate__fadeOut' role='alert'>
-    <strong>Username Already Exists!</strong><br> Please write another username.
+    <strong>Email Already Exists!</strong><br> Please write another email.
     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
   </div>";
 }

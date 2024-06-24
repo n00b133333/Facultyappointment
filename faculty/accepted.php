@@ -1,5 +1,5 @@
 <?php
-$page = "Appointments";
+$page = "Approved Appointments";
 include('includes/header.php');
 include('includes/sidenavbar.php');
 ?>
@@ -42,14 +42,91 @@ include('includes/sidenavbar.php');
   });
 </script>
 
-<div class="row text-center mt-3 glass">
-  <div class="col">
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAppointmentModal">
+<?php 
+
+
+
+if(isset($_GET['approved'])){
+  echo "
+  <script> 
+
+  Swal.fire({
+      title: 'Approved!',
+      text: 'Appointment successfully approved.',
+      icon: 'success',
+      confirmButtonColor: '#d9534f',
+  
+    }); 
+
+    
+    </script>";
+    
+}
+
+if(isset($_GET['completed'])){
+  echo "
+  <script> 
+
+  Swal.fire({
+      title: 'Appointment Completed!',
+      text: 'Appointment successfully completed.',
+      icon: 'success',
+      confirmButtonColor: '#d9534f',
+  
+    }); 
+
+    
+    </script>";
+    
+}
+
+
+
+if(isset($_GET['declined'])){
+  echo "
+  <script> 
+
+  Swal.fire({
+      title: 'Appointment Declined!',
+      text: 'Appointment successfully declined.',
+      icon: 'success',
+      confirmButtonColor: '#d9534f',
+  
+    }); 
+
+    
+    </script>";
+    
+}
+
+if(isset($_GET['canceled'])){
+  echo "
+  <script> 
+
+  Swal.fire({
+      title: 'Appointment Canceled!',
+      text: 'Appointment successfully canceled.',
+      icon: 'success',
+      confirmButtonColor: '#d9534f',
+  
+    }); 
+
+    
+    </script>";
+    
+}
+
+
+?>
+
+<div class="row text-center mt-3 glass bg-white rounded shadow-lg">
+  <div class="col p-4 bg-dark rounded mb-3">
+    <!-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#addAppointmentModal">
       <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12h4m-2 2v-4M4 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
       </svg>
       Add Appointment
-    </button>
+    </button> -->
   </div>
 
   <!-- Add Appointment Modal -->
@@ -110,7 +187,9 @@ include('includes/sidenavbar.php');
   <table id="myTable" class="display col">
     <thead>
       <tr>
-        <th>Appointment Name</th>
+        <th>Appointment Title</th>
+        <th>Meeting Room</th>
+        <th>Appointee</th>
         <th>Date</th>
         <th>Start Time</th>
         <th>End Time</th>
@@ -119,7 +198,7 @@ include('includes/sidenavbar.php');
       </tr>
     </thead>
     <tbody>
-      <?php schedules($conn,$_SESSION('user_ID')) ?>
+      <?php acschedules($conn,$_SESSION['faculty_ID']) ?>
     </tbody>
   </table>
 </div>

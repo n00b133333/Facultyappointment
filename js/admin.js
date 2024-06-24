@@ -45,6 +45,7 @@ $(function() {
                 _details.find('#room').text(scheds[id].room);
                 _details.find('#start').text(scheds[id].adate);
                 _details.find('#faculty').text(scheds[id].faculty);
+                _details.find('#appointee').text(scheds[id].appointee);
                 _details.find('#end').text(scheds[id].sdate+" - "+scheds[id].edate);
                 _details.find('#edit,#delete').attr('data-id', id);
                 _details.modal('show');

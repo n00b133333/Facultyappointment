@@ -1,50 +1,13 @@
 <?php
-$page = "Dashboard";
+$page = "Schedules";
 include('includes/header.php'); ?>
 
 <?php require_once('../db.php') ?>
-<!DOCTYPE html>
-<html lang="en">
- 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scheduling</title>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="../fullcalendar/lib/main.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <script src="../js/jquery-3.6.0.min.js"></script>
-    <script src="../fullcalendar/lib/main.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+
     <style>
-        :root {
-            --bs-success-rgb: 71, 222, 152 !important;
-        }
-
-        html,
-        body {
-            height: 100%;
-            width: 100%;
-            font-family: 'Noto Sans';
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            display: flex;
-        }
-
-        #page-container {
-            display: flex;
-            height: 100%;
-            width: 100%;
-        }
-
-        #sidenavbar {
+     
+   
+     #sidenavbar {
             width: 250px;
             background-color: #f8f9fa;
             position: fixed;
@@ -58,16 +21,12 @@ include('includes/header.php'); ?>
 
         #main-content {
             margin-left: 10px;
-            flex-grow: 1;
+            flex-grow: 0.8;
             padding: 20px;
             overflow-y: auto;
         }
 
-        .container.py-5 {
-            padding-top: 5rem;
-            padding-bottom: 5rem;
-        }
-
+   
         .btn-info.text-light:hover,
         .btn-info.text-light:focus {
             background: #000;
@@ -79,17 +38,55 @@ include('includes/header.php'); ?>
             border-width: 1px !important;
         }
     </style>
+
 </head>
  
 <body class="bg-light">
+
     <div id="page-container">
         <?php include('includes/sidenavbar.php'); ?>
         <div id="main-content">
-            <div class="container py-5">
+            <div class="container ">
                 <div class="row justify-content-center">
-                    <div class="col-md-9" >
+                    <div class="col-md-9 bg-white rounded shadow-lg p-4" >
                         <div id="calendar"></div>
                     </div>
+                    <!-- <div class="col-md-3">
+                        <div class="card rounded-0 shadow">
+                            <div class="card-header bg-gradient bg-primary text-light">
+                                <h5 class="card-title">Schedule Form</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="container-fluid">
+                                    <form action="save_schedule.php" method="post" id="schedule-form">
+                                        <input type="hidden" name="id" value="">
+                                        <div class="form-group mb-2">
+                                            <label for="title" class="control-label">Title</label>
+                                            <input type="text" class="form-control form-control-sm rounded-0" name="title" id="title" required>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="description" class="control-label">Description</label>
+                                            <textarea rows="3" class="form-control form-control-sm rounded-0" name="description" id="description" required></textarea>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="start_datetime" class="control-label">Start</label>
+                                            <input type="datetime-local" class="form-control form-control-sm rounded-0" name="start_datetime" id="start_datetime" required>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="end_datetime" class="control-label">End</label>
+                                            <input type="datetime-local" class="form-control form-control-sm rounded-0" name="end_datetime" id="end_datetime" required>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-center">
+                                    <button class="btn btn-primary btn-sm rounded-0" type="submit" form="schedule-form"><i class="fa fa-save"></i> Save</button>
+                                    <button class="btn btn-default border btn-sm rounded-0" type="reset" form="schedule-form"><i class="fa fa-reset"></i> Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
             </div>
             <!-- Event Details Modal -->
@@ -97,7 +94,7 @@ include('includes/header.php'); ?>
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content rounded-0">
                         <div class="modal-header rounded-0">
-                            <h5 class="modal-title">Schedule Details</h5>
+                            <h5 class="modal-title">Appointment Details</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body rounded-0">
@@ -107,17 +104,19 @@ include('includes/header.php'); ?>
                                     <dd id="title" class="fw-bold fs-4"></dd>
                                     <dt class="text-muted">Description</dt>
                                     <dd id="description" class=""></dd>
-                                    <dt class="text-muted">Start</dt>
+                                    <dt class="text-muted">Appointee</dt>
+                                    <dd id="faculty" class=""></dd>
+                                    <dt class="text-muted">Date of Appointment</dt>
                                     <dd id="start" class=""></dd>
-                                    <dt class="text-muted">End</dt>
+                                    <dt class="text-muted">Time</dt>
                                     <dd id="end" class=""></dd>
                                 </dl>
                             </div>
                         </div>
                         <div class="modal-footer rounded-0">
                             <div class="text-end">
-                                <button type="button" class="btn btn-primary btn-sm rounded-0" id="edit" data-id="">Edit</button>
-                                <button type="button" class="btn btn-danger btn-sm rounded-0" id="delete" data-id="">Delete</button>
+                            <!-- <button type="button" class="btn btn-primary btn-sm rounded-0" id="edit" data-id="">Edit</button>
+                            <button type="button" class="btn btn-danger btn-sm rounded-0" id="delete" data-id="">Delete</button> -->
                                 <button type="button" class="btn btn-secondary btn-sm rounded-0" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -128,27 +127,29 @@ include('includes/header.php'); ?>
         </div>
     </div>
  
-<?php 
-$appointments = $conn->query("SELECT * FROM `appointments`");
-$app_res = [];
-foreach($appointments->fetch_all(MYSQLI_ASSOC) as $row){
-    $start_datetime = $row['appointment_date'] . ' ' . $row['start_time'];
-    $end_datetime = $row['appointment_date'] . ' ' . $row['end_time'];
-    $row['sdate'] = date("F d, Y h:i A",strtotime($start_datetime));
-    $row['edate'] = date("F d, Y h:i A",strtotime($end_datetime));
-    $row['start_datetime'] = $start_datetime;
-    $row['end_datetime'] = $end_datetime;
-    $app_res[$row['id']] = $row;
+    <?php 
+    $faculty_id = $_SESSION['faculty_ID'];
+$schedules = $conn->query("SELECT * FROM `appointments` INNER JOIN faculty ON appointments.faculty_ID = faculty.faculty_ID INNER JOIN users ON appointments.user_ID = users.user_ID WHERE faculty.faculty_ID = $faculty_id AND appointments.status = 1");
+$sched_res = [];
+foreach($schedules->fetch_all(MYSQLI_ASSOC) as $row){
+    $row['title'] = $row['appointment_name'];
+    $row['description'] = $row['notes'];
+    $row['adate'] = date("F d, Y ",strtotime($row['appointment_date']));
+    $row['sdate'] = date(" h:i A",strtotime($row['start_time']));
+    $row['edate'] = date(" h:i A",strtotime($row['end_time']));
+    $row['faculty'] = $row['u_fname']." ".$row['u_lname'];
+
+    $sched_res[$row['id']] = $row; // Use array_push or [] to append to array instead of using ID as key
 }
-?>
-<?php 
 if(isset($conn)) $conn->close();
 ?>
 </body>
 <script>
-    var scheds = $.parseJSON('<?= json_encode($app_res) ?>')
+    var scheds = <?php echo json_encode($sched_res, JSON_HEX_TAG); ?>;
+    console.log(scheds);
 </script>
-<script src="../js/script.js"></script>
+
+<script src="../js/faculty.js"></script>
  
 </html>
 

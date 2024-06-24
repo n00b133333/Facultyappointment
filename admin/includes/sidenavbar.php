@@ -1,16 +1,11 @@
 <div class="d-flex p-fixed flex-column flex-shrink-0 p-3 bg-dark text-light shadow-lg d-none d-lg-flex" style="width: 280px; height:100vh; z-index:10;" id="sidebar">
     <a href="/" class="d-flex text-center align-items-center mb-3 mb-md-0 me-md-auto link-light text-decoration-none">
     <div class="dropdown text-center">
-        <a href="#" class="w-full align-items-center link-light text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+        <a href="#" class="w-full me-3 align-items-center link-light text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="../uploads/<?php echo userinfo($conn,$_SESSION['admin_ID'])->profile ?>" alt="" width="80" height="80" class="rounded-circle me-2"><br>
             <strong  style=" font-size:25px; "><?php echo userinfo($conn,$_SESSION['admin_ID'])->username ?></strong>
         </a>
-        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-        
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-        </ul>
+       
     </div>
     </a>
     <hr>
@@ -44,6 +39,16 @@
             </a>
         </li>
 
+        <li>
+            <a href="appointments.php" class="nav-link link-light <?php if ($page == 'Appointments'){echo 'active text-light';} ?>">
+            <svg class="w-6 h-6 text-gray-800 dark:text-white me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m11.5 11.5 2.071 1.994M4 10h5m11 0h-1.5M12 7V4M7 7V4m10 3V4m-7 13H8v-2l5.227-5.292a1.46 1.46 0 0 1 2.065 2.065L10 17Zm-5 3h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z"/>
+</svg>
+
+               Appointments
+            </a>
+        </li>
+
 
         <!-- <li>
             <a href="admins.php" class="nav-link link-light <?php if ($page == 'Admins'){echo 'active text-light';} ?>">
@@ -64,7 +69,7 @@
                 Schedules
             </a>
         </li>
-        <li>
+        <!-- <li>
             <a href="logs.php" class="nav-link link-light <?php if ($page == 'Logs'){echo 'active text-light';} ?>">
             <svg class="w-6 h-6 text-gray-800 light:text-white me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
   <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M9 8h10M9 12h10M9 16h10M4.99 8H5m-.02 4h.01m0 4H5"/>
@@ -72,7 +77,7 @@
 
                 Logs
             </a>
-        </li>
+        </li> -->
 
         <li>
             <a href="archives.php" class="nav-link link-light <?php if ($page == 'Archives'){echo 'active text-light';} ?>">

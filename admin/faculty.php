@@ -70,7 +70,7 @@ include('includes/header.php'); ?>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" id="submit" class="btn btn-primary">Add faculty</button>
+        <button type="submit" id="submit" class="btn btn-danger">Add faculty</button>
       </div>
       </form>
     
