@@ -41,7 +41,7 @@ if(isset($_POST['submit'])){
       </div>";
 
     }
-    else if(!password_verify($pass, usernameexists($conn, $email)['pass'])){
+    else if(!password_verify($pass, usernameexists($conn, $email)['pass']) || usernameexists($conn, $email)['archive']==1){
 
         $errorIncPass = true;
 

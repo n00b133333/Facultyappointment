@@ -5,27 +5,7 @@ include('includes/header.php'); ?>
 <?php require_once('../db.php') ?>
 
     <style>
-        :root {
-            --bs-success-rgb: 71, 222, 152 !important;
-        }
-
-        html,
-        body {
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            display: flex;
-        }
-
-        #page-container {
-            display: flex;
-            height: 100%;
-            width: 100%;
-        }
+      
 
         #sidenavbar {
             width: 250px;

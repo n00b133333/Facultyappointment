@@ -22,19 +22,19 @@ function convertdate($date) {
     return $readableDate;
 }
 function schedules($conn,$user_ID){
-    $sql = "SELECT *,appointments.status AS ap_status FROM appointments LEFT JOIN declined_appointments ON appointments.id = declined_appointments.appointment_ID  INNER JOIN faculty ON appointments.faculty_ID = faculty.faculty_ID INNER JOIN users ON appointments.user_ID = users.user_ID WHERE users.user_ID = $user_ID ORDER BY created_at DESC";
+    $sql = "SELECT *,appointments.status AS ap_status FROM appointments LEFT JOIN declined_appointments ON appointments.id = declined_appointments.appointment_ID  INNER JOIN faculty ON appointments.faculty_ID = faculty.faculty_ID INNER JOIN users ON appointments.user_ID = users.user_ID WHERE users.user_ID = $user_ID ORDER BY appointments.created_at DESC";
     $result = mysqli_query($conn, $sql);
   
     while($row = mysqli_fetch_object($result)){
         echo "
         <tr>
             <td>{$row->appointment_name}</td>
-            <td>{$row->meeting_room}</td>
-             <td>{$row->u_fname} {$row->u_lname}</td>
-            <td>".convertdate($row->appointment_date)."</td>
+            <td class='res'>{$row->meeting_room}</td>
+             <td class='res'>{$row->fname} {$row->lname}</td>
+            <td >".convertdate($row->appointment_date)."</td>
             
-            <td>".converttime($row->start_time)."</td>
-            <td>".converttime($row->end_time)."</td>
+            <td class='res'>".converttime($row->start_time)."</td>
+            <td class='res'>".converttime($row->end_time)."</td>
 
            
          ";

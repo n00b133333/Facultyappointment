@@ -11,6 +11,7 @@ body{
    
     padding: 20px;
 
+
     /* height: 100vh; 
     background-image: url('../img/TUP.jpg');
     background-size: cover; 
@@ -26,19 +27,45 @@ body{
     width: 82.5%!important;
     margin-left:280px;
     
+   
 
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .main-content {
         flex-direction: column;
     
+    
 
+    }
+
+    a,button{
+       font-size: 12px!important;
+
+    }
+    .fc-toolbar-title{
+        font-size: 20px!important;
+    }
+    .res{
+        display: none!important;
+    }
+    .ap-form {
+        min-width: 180px!important;
     }
     .card{
         width: 100%;
     }
+    #myTable{
+        max-width: 200px;
+        padding: 0px!important;
+    }
+    .pcard{
+        min-width: 350px!important;
+    }
+    .res-title{
+        font-size: 20px!important;
+     }
 }
 
 #sidebar{

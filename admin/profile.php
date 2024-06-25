@@ -65,25 +65,25 @@
 <!--cards-->
     <div class="card shadow " >
   <div class="card-body row gap-3 ">
-   <div class="col col-3 text-center"><img src="../uploads/<?php echo userinfo($conn,$_SESSION['admin_ID'])->profile ?>" id="image_preview" alt="" height="200" width="200"><br> <div class="mt-3 col-11">
+   <div class="col col-md-3 col-sm-12 text-center"><img src="../uploads/<?php echo userinfo($conn,$_SESSION['admin_ID'])->profile ?>" id="image_preview" alt="" height="200" width="200"><br> <div class="mt-3 col-11">
  
   <input  type="file" id="pic" class="form-control" name="pic">
 </div></div>
    
-   <div class="col-9 row ">
-   <div class="mb-3 col-4">
+   <div class="col-md-9 col-sm-12 row ">
+   <div class="mb-3 col-md-4 col-sm-12">
 
   <label for="exampleFormControlInput1" class="form-label">First Name</label>
   <input type="text" class="form-control shadow-sm " name="fname" id="fname" value="<?php echo userinfo($conn,$_SESSION['admin_ID'])->fname ?>" >
 
 </div>
-<div class="mb-3 col-4">
+<div class="mb-3 col-md-4 col-sm-12">
 
   <label for="exampleFormControlInput1" class="form-label">Middle Initial</label>
   <input type="text" class="form-control shadow-sm " id="midname" name="midname"  value="<?php echo userinfo($conn,$_SESSION['admin_ID'])->mname ?>">
 
 </div>
-<div class="mb-3 col-4">
+<div class="mb-3 col-md-4 col-sm-12">
 
 <label for="exampleFormControlInput1" class="form-label">Last Name</label>
 <input type="text" class="form-control shadow-sm" id="lname" name="lname"  value="<?php echo userinfo($conn,$_SESSION['admin_ID'])->lname ?>" >
@@ -92,14 +92,14 @@
 
 
 
-<div class="mb-3 col-6" >
+<div class="mb-3 col-md-6 col-sm-12" >
 
 <label for="exampleFormControlInput1" class="form-label">Email</label>
 <input type="email" class="form-control shadow-sm " id="email"  name="email"  value="<?php echo userinfo($conn,$_SESSION['admin_ID'])->email ?>" >
 
 </div>
 
-<div class="mb-3 col-6" >
+<div class="mb-3 col-md-6 col-sm-12" >
 
 <label for="exampleFormControlInput1" class="form-label">Username</label>
 <input type="text" class="form-control shadow-sm " id="uname"  name="uname"  value="<?php echo userinfo($conn,$_SESSION['admin_ID'])->username ?>" >
@@ -109,14 +109,14 @@
 
 
 
-<div class="mb-3 col-4">
+<div class="mb-3 col-md-4 col-sm-12">
 <!-- 
 <label for="exampleFormControlInput1" class="form-label" >Password</label>
 <input type="password" class="form-control shadow-sm" name="pass" id="pass" value="<?php echo userinfo($conn,$_SESSION['admin_ID'])->pass ?>">
 
 </div>
 
-<div class="mb-3 col-4">
+<div class="mb-3 col-md-4 col-sm-12">
 
 <label for="exampleFormControlInput1" class="form-label" >Confirm Password</label>
 <input type="password" class="form-control shadow-sm" name="cpass" id="cpass"  value="<?php echo userinfo($conn,$_SESSION['admin_ID'])->pass ?>">
@@ -133,7 +133,7 @@
 </div>
    
   
-<div class="col col-12 text-center"> <a href="faculty.php" class="btn btn-dark me-3">Back</a> <button type="submit" id="submit" class="btn btn-success">Save Changes</button> </div>
+<div class="col col-12 text-center">  <button type="submit" id="submit" class="btn btn-success">Save Changes</button> </div>
 
 </form>
 

@@ -135,7 +135,7 @@
             <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
             <span class="fs-4">
 
-            <a class="nav-link fw-bold" href="#" >
+            <a class="nav-link fw-bold res-title" href="#" >
                       
                        <?php echo $page; ?>
                     </a>
@@ -157,11 +157,12 @@
                     <a class="nav-link " href="users.php">Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="schedules.php">Schedules</a>
+                    <a class="nav-link " href="appointments.php">Appointments</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="logs.php">Logs</a>
+                    <a class="nav-link " href="schedules.php">Schedules</a>
                 </li>
+           
                 <li class="nav-item">
                     <a class="nav-link " href="archives.php">Archives</a>
                 </li>
@@ -173,9 +174,9 @@
                         <?php echo userinfo($conn,$_SESSION['admin_ID'])->username ?>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="profile.php">Profile</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        <li><a class="dropdown-item" href="includes/logout.php">Sign out</a></li>
                     </ul>
                 </li>
             </ul>

@@ -32,12 +32,12 @@ function schedules($conn,$faculty_ID){
         echo "
         <tr>
             <td>{$row->appointment_name}</td>
-            <td>{$row->meeting_room}</td>
-             <td>{$row->u_fname} {$row->u_lname}</td>
-            <td>".convertdate($row->appointment_date)."</td>
+            <td class='res'>{$row->meeting_room}</td>
+             <td class='res'>{$row->u_fname} {$row->u_lname}</td>
+            <td >".convertdate($row->appointment_date)."</td>
             
-            <td>".converttime($row->start_time)."</td>
-            <td>".converttime($row->end_time)."</td>
+            <td class='res'>".converttime($row->start_time)."</td>
+            <td class='res'>".converttime($row->end_time)."</td>
 
            
          ";
@@ -172,12 +172,12 @@ function acschedules($conn,$faculty_ID){
         echo "
         <tr>
             <td>{$row->appointment_name}</td>
-            <td>{$row->notes}</td>
-             <td>{$row->u_fname} {$row->u_lname}</td>
-            <td>".convertdate($row->appointment_date)."</td>
+            <td class='res'>{$row->meeting_room}</td>
+             <td class='res'>{$row->u_fname} {$row->u_lname}</td>
+            <td >".convertdate($row->appointment_date)."</td>
             
-            <td>".converttime($row->start_time)."</td>
-            <td>".converttime($row->end_time)."</td>
+            <td class='res'>".converttime($row->start_time)."</td>
+            <td class='res'>".converttime($row->end_time)."</td>
 
            
          ";
@@ -341,12 +341,12 @@ function decschedules($conn,$faculty_ID){
         echo "
         <tr>
             <td>{$row->appointment_name}</td>
-            <td>{$row->notes}</td>
-             <td>{$row->u_fname} {$row->u_lname}</td>
-            <td>".convertdate($row->appointment_date)."</td>
+            <td class='res'>{$row->meeting_room}</td>
+             <td class='res'>{$row->u_fname} {$row->u_lname}</td>
+            <td >".convertdate($row->appointment_date)."</td>
             
-            <td>".converttime($row->start_time)."</td>
-            <td>".converttime($row->end_time)."</td>
+            <td class='res'>".converttime($row->start_time)."</td>
+            <td class='res'>".converttime($row->end_time)."</td>
 
            
          ";

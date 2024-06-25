@@ -95,10 +95,10 @@
 
     <thead>
         <tr>
-            <th>Profile</th>
+            <th  class="res">Profile</th>
             <th>Name</th>
-            <th>Email</th>
-            <th>Address</th>
+            <th  class="res">Email</th>
+            <th  class="res">Address</th>
             <th>Contact Number</th>
           
             <th>Action</th>

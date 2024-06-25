@@ -55,9 +55,10 @@
     
     <div class="table-container m-4 text-start">
 
+    <div class="form-message"></div>
     <form action="includes/update.php" method="post" enctype="multipart/form-data">
 <!--cards-->
-    <div class="card shadow w-50 mx-auto" >
+    <div class="card shadow w-50 mx-auto pcard" >
   <div class="card-body row gap-3 ">
    
    
@@ -111,7 +112,6 @@
 
     </div>
 
-    <div class="form-message"></div>
     </div>
 
 </main>

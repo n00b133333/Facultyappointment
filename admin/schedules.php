@@ -130,7 +130,7 @@ include('includes/header.php'); ?>
     </div>
  
     <?php 
-    $user_id = $_SESSION['user_ID'];
+   
 $schedules = $conn->query("SELECT * FROM `appointments` INNER JOIN faculty ON appointments.faculty_ID = faculty.faculty_ID INNER JOIN users ON appointments.user_ID = users.user_ID WHERE appointments.status = 1");
 $sched_res = [];
 foreach($schedules->fetch_all(MYSQLI_ASSOC) as $row){

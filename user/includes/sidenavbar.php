@@ -36,6 +36,18 @@
 Schedule Appointment
             </a>
         </li>
+
+        <li>
+            <a href="myappointments.php" class="nav-link link-light <?php if ($page == 'My Appointments'){echo 'active text-light';} ?>">
+            <svg class="w-6 h-6 text-gray-800 dark:text-white me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 3v4a1 1 0 0 1-1 1H5m4 8h6m-6-4h6m4-8v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1Z"/>
+</svg>
+
+
+
+My Appointments
+            </a>
+        </li>
      
         
         <li>
@@ -85,7 +97,7 @@ Schedule Appointment
             <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
             <span class="fs-4">
 
-            <a class="nav-link fw-bold" href="#" >
+            <a class="nav-link fw-bold res-title" href="#" >
                       
                        <?php echo $page; ?>
                     </a>
@@ -98,31 +110,27 @@ Schedule Appointment
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link " href="dashboard.php">Dashboard</a>
+                    <a class="nav-link " href="schedule.php">Schedules</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="faculty.php">Faculty</a>
+                    <a class="nav-link " href="appointment.php">Schedule Appointment</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="users.php">Users</a>
+                    <a class="nav-link " href="myappointments.php">My Appointments</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="schedules.php">Schedules</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="logs.php">Logs</a>
-                </li>
+              
+             
                 <hr>
           
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                        Faculty
+                        <img  src="../uploads/<?php echo userinfo($conn,$_SESSION['user_ID'])['profile'] ?>" alt="" width="32" height="32" class="rounded-circle me-2">
+                        <?php echo userinfo($conn, $_SESSION['user_ID'])['u_username']; ?>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="profile.php">Profile</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        <li><a class="dropdown-item" href="includes/logout.php">Logout</a></li>
                     </ul>
                 </li>
             </ul>

@@ -7,13 +7,13 @@ body{
 
 
     
+    
     padding: 20px;
 
     padding-left: 30px;
 
     padding-right: 30px;
 
-    max-width: 82%;
     
 
     /* height: 100vh; 
@@ -36,11 +36,31 @@ body{
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .main-content {
         flex-direction: column;
     
 
+    }
+    a,button{
+        font-size: 12px!important;
+ 
+     }
+     .fc-toolbar-title{
+         font-size: 20px!important;
+     }
+     .res{
+         display: none!important;
+     }
+     .res-title{
+        font-size: 20px!important;
+     }
+     .ap-form {
+         min-width: 350px!important;
+     }
+     #myTable{
+        max-width: 200px;
+        padding: 0px!important;
     }
     .card{
         width: 100%;

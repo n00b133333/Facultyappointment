@@ -30,15 +30,36 @@ body{
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .main-content {
         flex-direction: column;
     
 
     }
+    
+    a,button{
+        font-size: 12px!important;
+ 
+     }
+     .fc-toolbar-title{
+         font-size: 20px!important;
+     }
+     .res{
+         display: none!important;
+     }
+     .ap-form {
+         min-width: 350px!important;
+     }
+     #myTable{
+        max-width: 200px;
+        padding: 0px!important;
+    }
     .card{
         width: 100%;
     }
+    .res-title{
+        font-size: 20px!important;
+     }
 }
 
 #sidebar{

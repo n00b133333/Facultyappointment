@@ -114,11 +114,11 @@ if(isset($_GET['declined'])){
     <thead>
       <tr>
         <th>Appointment Title</th>
-        <th>Meeting Room</th>
-        <th>Appointee</th>
+        <th  class="res">Meeting Room</th>
+        <th  class="res">Appointee</th>
         <th>Date</th>
-        <th>Start Time</th>
-        <th>End Time</th>
+        <th  class="res">Start Time</th>
+        <th  class="res">End Time</th>
         <th>Action</th>
         <th>Status</th>
       </tr>
@@ -135,7 +135,8 @@ if(isset($_GET['declined'])){
       "lengthMenu": "<p class='ms-5'>Show _MENU_</p>",
       "search": "Search appointment: ",
       "info": "<p class='ms-5'>Showing _START_ to _END_ of _TOTAL_ appointments</p>",
-    }
+    },
+    "order": [] // Disable ordering
   });
 
   const myModal = document.getElementById('myModal');

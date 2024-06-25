@@ -1,12 +1,16 @@
 <?php
 $page = "Dashboard";
 include('includes/header.php'); ?>
-
+<style>
+  body{
+    padding-right: 0px!important;
+  }
+</style>
 <?php include('includes/sidenavbar.php'); ?>
 
 
-<div class="row gap-3 mb-3">
-<div class="card col" >
+<div class="row gap-3 mb-3 ">
+<div class="card col-md col-sm-12" >
   <div class="card-body">
     <h5 class="card-title">Total Appointments</h5>
     <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
@@ -19,7 +23,7 @@ include('includes/header.php'); ?>
   </div>
 </div>
 
-<div class="card col" >
+<div class="card col-md col-sm-12" >
   <div class="card-body">
     <h5 class="card-title">Approved Appointments</h5>
     <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
@@ -34,7 +38,7 @@ include('includes/header.php'); ?>
 </div>
 
 
-<div class="card col" >
+<div class="card col-md col-sm-12" >
   <div class="card-body">
     <h5 class="card-title">Total Users</h5>
     <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
@@ -53,7 +57,7 @@ include('includes/header.php'); ?>
 </div>
 
 
-<div class="card col" >
+<div class="card col-md col-sm-12" >
   <div class="card-body">
     <h5 class="card-title">Total Faculty Members</h5>
     <h6 class="card-subtitle mb-2 text-body-secondary"></h6>

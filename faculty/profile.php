@@ -64,46 +64,46 @@
 <!--cards-->
     <div class="card shadow " >
   <div class="card-body row gap-3 ">
-   <div class="col col-3 text-center"><img src="../uploads/<?php echo userinfo($conn,$_SESSION['faculty_ID'])['profile'] ?>" id="image_preview" alt="" height="200" width="200"><br> <div class="mt-3 col-11">
+   <div class="col col-md-3 col-sm-12 text-center"><img src="../uploads/<?php echo userinfo($conn,$_SESSION['faculty_ID'])['profile'] ?>" id="image_preview" alt="" height="200" width="200"><br> <div class="mt-3 col-11">
  
   <input  type="file" id="pic" class="form-control" name="pic">
 </div></div>
    
-   <div class="col-9 row ">
-   <div class="mb-3 col-4">
+   <div class="col-md-9 col-sm-12 row ">
+   <div class="mb-3 col-md-4 col-sm-12">
 
   <label for="exampleFormControlInput1" class="form-label">First Name</label>
   <input type="text" class="form-control shadow-sm " name="fname" id="fname" value="<?php echo userinfo($conn,$_SESSION['faculty_ID'])['fname'] ?>" >
 
 </div>
-<div class="mb-3 col-4">
+<div class="mb-3 col-md-4 col-sm-12">
 
   <label for="exampleFormControlInput1" class="form-label">Middle Initial</label>
   <input type="text" class="form-control shadow-sm " id="midname" name="midname"  value="<?php echo userinfo($conn,$_SESSION['faculty_ID'])['mname'] ?>">
 
 </div>
-<div class="mb-3 col-4">
+<div class="mb-3 col-md-4 col-sm-12">
 
 <label for="exampleFormControlInput1" class="form-label">Last Name</label>
 <input type="text" class="form-control shadow-sm" id="lname" name="lname"  value="<?php echo userinfo($conn,$_SESSION['faculty_ID'])['lname'] ?>" >
 
 </div>
 
-<div class="mb-3 col-6" >
+<div class="mb-3 col-md-6 col-sm-12" >
 
 <label for="exampleFormControlInput1" class="form-label">Address</label>
 <input type="text" class="form-control shadow-sm " id="address"  name="address"  value="<?php echo userinfo($conn,$_SESSION['faculty_ID'])['address'] ?>" >
 
 </div>
 
-<div class="mb-3 col-6" >
+<div class="mb-3 col-md-6 col-sm-12" >
 
 <label for="exampleFormControlInput1" class="form-label">Contact Number</label>
 <input type="text" class="form-control shadow-sm " id="pnum"  name="pnum"  value="<?php echo userinfo($conn,$_SESSION['faculty_ID'])['contact_number'] ?>" >
 
 </div>
 
-<div class="mb-3 col-4" >
+<div class="mb-3 col-md-4 col-sm-12" >
 
 <label for="exampleFormControlInput1" class="form-label">Birh Date</label>
 <input type="date" class="form-control shadow-sm " id="bday"  name="bday"  value="<?php echo userinfo($conn,$_SESSION['faculty_ID'])['bday'] ?>" >
@@ -111,7 +111,7 @@
 </div>
 
 
-<div class="mb-3 col-4" >
+<div class="mb-3 col-md-4 col-sm-12" >
 
 <label for="exampleFormControlInput1" class="form-label">Gender</label>
 <select class="form-select shadow-sm " id="gender" name="gender" aria-label="Default select example">
@@ -137,7 +137,7 @@ else{
 
 </div>
 
-<div class="mb-3 col-4" >
+<div class="mb-3 col-md-4 col-sm-12" >
 
 <label for="exampleFormControlInput1" class="form-label">Email</label>
 <input type="email" class="form-control shadow-sm " id="email"  name="email"  value="<?php echo userinfo($conn,$_SESSION['faculty_ID'])['email'] ?>" >
@@ -148,7 +148,7 @@ else{
 
 
 
-<div class="mb-3 col-4">
+<div class="mb-3 col-md-4 col-sm-12">
 
 
 

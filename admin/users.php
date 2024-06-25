@@ -118,11 +118,11 @@ include('includes/header.php'); ?>
 
     <thead>
         <tr>
-            <th>Profile</th>
+            <th class="res">Profile</th>
             <th>Name</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th>Contact Number</th>
+            <th class="res">Email</th>
+            <th class="res">Address</th>
+            <th class="res">Contact Number</th>
             <th>Username</th>
             <th>Action</th>
             <th>Status</th>
@@ -141,7 +141,8 @@ include('includes/header.php'); ?>
            "lengthMenu":     "<p class='ms-5'>Show _MENU_</p>",
            "search":         "Search user: ",
            "info":           "<p class='ms-5'>Showing _START_ to _END_ of _TOTAL_ users</p>",
-    }
+    },
+    "order": [] // Disable ordering
     
 });
 
