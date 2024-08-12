@@ -188,7 +188,7 @@ echo "
                           <input type='hidden' name='id{$row->id}' value='{$row->id}'>
                           <p>Please state your reason for canceling this appointment</p>
                           <div class='form-floating'>
-  <textarea class='form-control mb-3' name='reason{$row->id}' placeholder='Leave a comment here' id='reason{$row->id}'></textarea>
+  <textarea class='form-control mb-3' name='reason{$row->id}' placeholder='Leave a comment here' id='reason{$row->id}' required></textarea>
   <label for='reason{$row->id}'>Type here</label>
 </div>
                           <div class='modal-footer'>
@@ -463,8 +463,44 @@ function emailexists($conn, $email){
                     return $results;
                 }
             }
-        
+        function checkAppointmentDate($conn,$id,$date )
+        {
 
+            $sql = "SELECT * FROM users WHERE user_ID = '$id' AND appointment_date = '$date'";
+
+            $resultData = mysqli_query($conn,$sql);
+
+            if($row = mysqli_fetch_assoc($resultData)){
+                return $row;
+            }
+            else{
+                $results = false;
+                return $results;
+            }
+
+        }
+
+
+        function checkOverlappedAppointment($conn, $id, $date, $start_time, $end_time) {
+            $sql = "
+                SELECT * FROM appointments 
+                WHERE user_ID = '$id' 
+                AND appointment_date = '$date' 
+                AND (
+                    (start_time < '$end_time' AND end_time > '$start_time')
+                )
+            ";
+        
+            $resultData = mysqli_query($conn, $sql);
+        
+            if (mysqli_fetch_assoc($resultData)) {
+                // An overlapping appointment exists
+                return true;
+            } else {
+                // No overlapping appointment
+                return false;
+            }
+        }
             function canceledEmail($email,$name,$reason) {
                 $mail = new PHPMailer(true);
             

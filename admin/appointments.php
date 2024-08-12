@@ -114,11 +114,11 @@ if(isset($_GET['declined'])){
     <thead>
       <tr>
         <th>Appointment Title</th>
-        <th  class="res">Meeting Room</th>
-        <th  class="res">Appointee</th>
+    
+        <th  class="res">Requested by</th>
         <th>Date</th>
-        <th  class="res">Start Time</th>
-        <th  class="res">End Time</th>
+        <th  class="res">Time</th>
+      
         <th>Action</th>
         <th>Status</th>
       </tr>

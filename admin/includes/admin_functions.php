@@ -535,12 +535,11 @@ function schedules($conn){
         echo "
         <tr>
             <td>{$row->appointment_name}</td>
-            <td class='res'>{$row->meeting_room}</td>
+       
              <td class='res'>{$row->u_fname} {$row->u_lname}</td>
             <td>".convertdate($row->appointment_date)."</td>
             
-            <td class='res'>".converttime($row->start_time)."</td>
-            <td class='res'>".converttime($row->end_time)."</td>
+         <td class='res'>".converttime($row->start_time)." - ". converttime($row->end_time)."</td>
 
            
          ";

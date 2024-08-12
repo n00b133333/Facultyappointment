@@ -15,6 +15,7 @@ if(isset($_POST['submit'])){
 
     $errorName = false;
     $errorStartTime = false;
+    $errorNotes = false;
     $errorDate = false;
     $errorEmpty = false;
     $errorTime = false;
@@ -23,14 +24,25 @@ if(isset($_POST['submit'])){
     $errorfaculty = false;
     $errorRoom = false;
 
-    if (empty($appointmentName) || empty($appointmentDate) || empty($startTime) || empty($endTime) || empty($faculty)|| empty($room)) {
-        echo "<div class='alert alert-danger alert-dismissible fade show animate__animated animate__fadeOut' role='alert'>
-        <strong>Please fill in all important details!</strong><br> You should check in on some of those fields below.
-        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-      </div>";
+    if (empty($appointmentName) || empty($appointmentDate) || empty($startTime) || empty($endTime) || empty($faculty)|| empty($room)|| empty($notes)) {
+        echo "
+      
+      
+       <script> 
+        Swal.fire({
+            title: 'Please fill in all important details!',
+            text: 'Please review the fields for any missing or incorrect information.',
+            icon: 'error',
+             confirmButtonColor: '#d9534f',
+        }); 
+      
+        </script>";
 
         if (empty($appointmentName)) {
             $errorName = true;
+        }
+        if (empty($notes)) {
+            $errorNotes = true;
         }
 
         if (empty($appointmentDate)) {
@@ -51,11 +63,33 @@ if(isset($_POST['submit'])){
             $errorRoom = true;
         }
         $errorEmpty = true;
-    } else if ($startTime >= $endTime) {
-        echo "<div class='alert alert-danger alert-dismissible fade show animate__animated animate__fadeOut' role='alert'>
-        <strong>Invalid time range!</strong><br> Start time must be before end time.
-        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-      </div>";
+    }else if(checkOverlappedAppointment($conn,$_SESSION["user_ID"],$appointmentDate,$startTime,$endTime) == true){
+
+        echo "  <script> 
+        Swal.fire({
+            title: 'Invalid time range!',
+            text: 'The appointment time overlaps with an existing appointment.',
+            icon: 'error',
+             confirmButtonColor: '#d9534f',
+        }); 
+      
+        </script>";
+        $errorTime = true;
+
+    }
+    
+    
+    else if ($startTime >= $endTime) {
+       
+        echo "  <script> 
+        Swal.fire({
+            title: 'Invalid time range!',
+            text: 'Start time must be before end time.',
+            icon: 'error',
+             confirmButtonColor: '#d9534f',
+        }); 
+      
+        </script>";
         $errorTime = true;
     } else {
         $uid = $_SESSION['user_ID'];

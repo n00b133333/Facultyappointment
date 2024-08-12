@@ -32,12 +32,12 @@ function schedules($conn,$faculty_ID){
         echo "
         <tr>
             <td>{$row->appointment_name}</td>
-            <td class='res'>{$row->meeting_room}</td>
+      
              <td class='res'>{$row->u_fname} {$row->u_lname}</td>
             <td >".convertdate($row->appointment_date)."</td>
             
-            <td class='res'>".converttime($row->start_time)."</td>
-            <td class='res'>".converttime($row->end_time)."</td>
+            <td class='res'>".converttime($row->start_time)." - ". converttime($row->end_time)."</td>
+     
 
            
          ";
@@ -89,7 +89,7 @@ function schedules($conn,$faculty_ID){
                                 <input type='text' class='form-control' id='appointmentDate{$row->id}' name='appointmentDate' value='{$row->notes}' readonly>
                             </div>
                                 <div class='form-group  mb-3'>
-                                <label for='appointmentDate{$row->id}' class='form-label'>Appointee</label>
+                                <label for='appointmentDate{$row->id}' class='form-label'>Requested by</label>
                                 <input type='text' class='form-control' id='appointmentDate{$row->id}' name='appointmentDate' value='{$row->u_fname} {$row->u_lname}' readonly>
                             </div>
                             <div class='form-group  mb-3'>
@@ -148,7 +148,7 @@ echo "
                           <input type='hidden' name='id{$row->id}' value='{$row->id}'>
                           <p>Please state your reason for declining this appointment</p>
                           <div class='form-floating'>
-  <textarea class='form-control mb-3' name='reason{$row->id}' placeholder='Leave a comment here' id='reason{$row->id}'></textarea>
+  <textarea class='form-control mb-3' name='reason{$row->id}' placeholder='Leave a comment here' id='reason{$row->id}' required></textarea>
   <label for='reason{$row->id}'>Type here</label>
 </div>
                           <div class='modal-footer'>
@@ -172,12 +172,11 @@ function acschedules($conn,$faculty_ID){
         echo "
         <tr>
             <td>{$row->appointment_name}</td>
-            <td class='res'>{$row->meeting_room}</td>
+  
              <td class='res'>{$row->u_fname} {$row->u_lname}</td>
             <td >".convertdate($row->appointment_date)."</td>
             
-            <td class='res'>".converttime($row->start_time)."</td>
-            <td class='res'>".converttime($row->end_time)."</td>
+            <td class='res'>".converttime($row->start_time)." - ". converttime($row->end_time)."</td>
 
            
          ";
@@ -226,7 +225,7 @@ function acschedules($conn,$faculty_ID){
                                 <input type='text' class='form-control' id='appointmentDate{$row->id}' name='appointmentDate' value='{$row->notes}' readonly>
                             </div>
                                 <div class='form-group  mb-3'>
-                                <label for='appointmentDate{$row->id}' class='form-label'>Appointee</label>
+                                <label for='appointmentDate{$row->id}' class='form-label'>Requested by</label>
                                 <input type='text' class='form-control' id='appointmentDate{$row->id}' name='appointmentDate' value='{$row->u_fname} {$row->u_lname}' readonly>
                             </div>
                             <div class='form-group  mb-3'>
@@ -341,12 +340,11 @@ function decschedules($conn,$faculty_ID){
         echo "
         <tr>
             <td>{$row->appointment_name}</td>
-            <td class='res'>{$row->meeting_room}</td>
+          
              <td class='res'>{$row->u_fname} {$row->u_lname}</td>
             <td >".convertdate($row->appointment_date)."</td>
             
-            <td class='res'>".converttime($row->start_time)."</td>
-            <td class='res'>".converttime($row->end_time)."</td>
+       <td class='res'>".converttime($row->start_time)." - ". converttime($row->end_time)."</td>
 
            
          ";
@@ -389,7 +387,7 @@ echo"
                               <input type='text' class='form-control' id='appointmentDate{$row->id}' name='appointmentDate' value='{$row->notes}' readonly>
                           </div>
                               <div class='form-group  mb-3'>
-                              <label for='appointmentDate{$row->id}' class='form-label'>Appointee</label>
+                              <label for='appointmentDate{$row->id}' class='form-label'>Requested by</label>
                               <input type='text' class='form-control' id='appointmentDate{$row->id}' name='appointmentDate' value='{$row->u_fname} {$row->u_lname}' readonly>
                           </div>
                           <div class='form-group  mb-3'>
