@@ -123,4 +123,13 @@ include('includes/sidenavbar.php');
   });
 </script>
 
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+    const now = new Date();
+    const philippinesTime = new Date(now.getTime() + (8 * 60 * 60 * 1000)); // Adding 8 hours to UTC time
+    const today = philippinesTime.toISOString().split('T')[0];
+    document.getElementById('appointmentDate').setAttribute('min', today);
+});
+</script>
+
 <?php include('includes/footer.php'); ?>

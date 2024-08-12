@@ -655,3 +655,14 @@ function emailexists($conn, $email){
             }
         }
     
+        function hasTimePassed($date, $startTime) {
+          
+            date_default_timezone_set('Asia/Manila');
+        
+          
+            $givenDateTime = strtotime("$date $startTime");
+        
+            $currentDateTime = time();
+        
+            return $givenDateTime < $currentDateTime;
+        }

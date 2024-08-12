@@ -77,6 +77,18 @@ if(isset($_POST['submit'])){
         $errorTime = true;
 
     }
+    else if(hasTimePassed($appointmentDate,$startTime)){
+        echo "  <script> 
+        Swal.fire({
+            title: 'Invalid time range!',
+            text: 'The start time on the given date has already passed.',
+            icon: 'error',
+             confirmButtonColor: '#d9534f',
+        }); 
+      
+        </script>";
+        $errorTime = true;
+    }
     
     
     else if ($startTime >= $endTime) {
