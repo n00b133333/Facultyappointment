@@ -126,7 +126,18 @@ if(isset($_GET['declined'])){
   </div>
 </div>
 
-
+<script>
+function toggleTextarea(id) {
+    const dropdown = document.getElementById(`reasonDropdown${$id}`);
+    const textarea = document.getElementById(`reasonText${id}`);
+    
+    if (dropdown.value === 'Other') {
+        textarea.style.display = 'block'; // Show textarea if 'Other' is selected
+    } else {
+        textarea.style.display = 'none'; // Hide textarea for other options
+    }
+}
+</script>
   <table id="myTable" class="display col">
     <thead>
       <tr>
@@ -145,6 +156,11 @@ if(isset($_GET['declined'])){
     </tbody>
   </table>
 </div>
+
+
+
+
+
 
 <script>
   let table = new DataTable('#myTable', {

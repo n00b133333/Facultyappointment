@@ -337,7 +337,7 @@ function forgotPasswordEmail($email, $otp) {
 
 
 function verifyOTP($username, $otp, $conn) {
-    $query = "SELECT * FROM users WHERE u_username = ? AND otp = ?";
+    $query = "SELECT * FROM users WHERE u_email = ? AND otp = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("si", $username, $otp);
     $stmt->execute();
@@ -345,7 +345,7 @@ function verifyOTP($username, $otp, $conn) {
 
     if ($result->num_rows > 0) {
         // OTP is correct, clear OTP field
-        $query = "UPDATE users SET otp = NULL , status = '1' WHERE u_username = ?";
+        $query = "UPDATE users SET otp = NULL , status = '1' WHERE u_email = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("s", $username);
         $stmt->execute();
@@ -378,7 +378,7 @@ function verifypassOTP($email, $otp, $conn) {
 
 
 function usernameexists($conn, $uname){
-    $sql="SELECT * FROM users WHERE u_username = '$uname'";
+    $sql="SELECT * FROM users WHERE u_email = '$uname'";
     
             $resultData = mysqli_query($conn,$sql);
     

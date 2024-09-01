@@ -5,7 +5,7 @@ require '../../vendor/autoload.php'; // Adjust the path as necessary
 $aid = $_GET['id'];
 if(isset($_POST['submit'.$aid])){
     $id = $_POST['id'.$aid];
-    $reason_unsanitized = $_POST['reason'.$aid];
+    $reason_unsanitized = $_POST['reason'.$aid]!==''?$_POST['reason'.$aid]:$_POST['select-reason'.$aid];
     $reason = htmlspecialchars($reason_unsanitized, ENT_QUOTES, 'UTF-8');
 
     $declined = "INSERT INTO declined_appointments (appointment_id,reason,canceled_by) VALUES ($id,'$reason',2)";

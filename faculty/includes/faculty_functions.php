@@ -147,8 +147,25 @@ echo "
                       <form action='includes/decline_appointment.php?id={$row->id}' method='post'>
                           <input type='hidden' name='id{$row->id}' value='{$row->id}'>
                           <p>Please state your reason for declining this appointment</p>
+                           <select class='form-select mb-3' aria-label='Default select example' name='select-reason{$row->id}'>
+  <option selected>Select a reason</option>
+  <option value='Due to unforeseen circumstances, I will not be able to attend our appointment.'>
+    Due to unforeseen circumstances, I will not be able to attend our appointment.
+</option>
+<option value='I’m sorry, but I need to decline our appointment due to a personal issue.'>
+    I’m sorry, but I need to decline our appointment due to a personal issue.
+</option>
+<option value='I need to decline my appointment because of a scheduling conflict.'>
+    I need to decline my appointment because of a scheduling conflict.
+</option>
+<option value='I must decline my appointment because of an urgent matter that has come up.'>
+    I must decline my appointment because of an urgent matter that has come up.
+</option>
+
+</select>
+
                           <div class='form-floating'>
-  <textarea class='form-control mb-3' name='reason{$row->id}' placeholder='Leave a comment here' id='reason{$row->id}' required></textarea>
+  <textarea class='form-control mb-3' name='reason{$row->id}' placeholder='Leave a comment here' id='reason{$row->id}'></textarea>
   <label for='reason{$row->id}'>Type here</label>
 </div>
                           <div class='modal-footer'>
@@ -260,6 +277,7 @@ if($row->ap_status == 2){
                                 
                                 echo "
                                 </label>
+                                
                                  <div class='form-floating'>
     <textarea class='form-control' placeholder='Leave a comment here' id='floatingTextarea{$row->id}' readonly>{$row->reason}</textarea>
     <label for='floatingTextarea{$row->id}'>Reason</label>
@@ -315,9 +333,18 @@ echo "
                       <form action='includes/cancel_appointment.php?id={$row->id}' method='post'>
                           <input type='hidden' name='id{$row->id}' value='{$row->id}'>
                           <p>Please state your reason for canceling this appointment</p>
+                           <select class='form-select mb-3' aria-label='Default select example' name='select-reason{$row->id}'>
+  <option selected>Select a reason</option>
+  <option value='Due to unforeseen circumstances, I will not be able to make it to our appointment. '>Due to unforeseen circumstances, I will not be able to make it to our appointment. </option>
+  <option value='I’m sorry, but I need to cancel our appointment due to a personal issue.'>I’m sorry, but I need to cancel our appointment due to a personal issue.</option>
+  <option value='I need to cancel my appointment because of a scheduling conflict'>I need to cancel my appointment because of a scheduling conflict</option>
+  <option value='I must cancel my appointment because of an urgent matter that has come up.'>I must cancel my appointment because of an urgent matter that has come up.</option>
+</select>
+
                           <div class='form-floating'>
+                              
   <textarea class='form-control mb-3' name='reason{$row->id}' placeholder='Leave a comment here' id='reason{$row->id}'></textarea>
-  <label for='reason{$row->id}'>Type here</label>
+  <label for='reason{$row->id} '>Other reason:</label>
 </div>
                           <div class='modal-footer'>
                               <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
@@ -333,7 +360,7 @@ echo "
 
 
 function decschedules($conn,$faculty_ID){
-    $sql = "SELECT *,appointments.status AS ap_status FROM appointments INNER JOIN declined_appointments ON appointments.id = declined_appointments.appointment_ID  INNER JOIN faculty ON appointments.faculty_ID = faculty.faculty_ID INNER JOIN users ON appointments.user_ID = users.user_ID WHERE faculty.faculty_ID = $faculty_ID AND appointments.status = 1 OR appointments.status = 3";
+    $sql = "SELECT *,appointments.status AS ap_status FROM appointments INNER JOIN declined_appointments ON appointments.id = declined_appointments.appointment_ID  INNER JOIN faculty ON appointments.faculty_ID = faculty.faculty_ID INNER JOIN users ON appointments.user_ID = users.user_ID WHERE faculty.faculty_ID = $faculty_ID AND appointments.status = 1 OR appointments.status = 3 ORDER BY created_at DESC";
     $result = mysqli_query($conn, $sql);
   
     while($row = mysqli_fetch_object($result)){
@@ -433,6 +460,8 @@ echo"
                           <input type='hidden' name='id{$row->id}' value='{$row->id}'>
                           <p>Please state your reason for canceling this appointment</p>
                           <div class='form-floating'>
+
+                          
   <textarea class='form-control mb-3' name='reason{$row->id}' placeholder='Leave a comment here' id='reason{$row->id}'></textarea>
   <label for='reason{$row->id}'>Type here</label>
 </div>
