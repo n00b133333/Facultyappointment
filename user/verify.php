@@ -131,7 +131,7 @@ padding: 20px;
 
 <div class="form-floating mb-3">
 <input type="text" class="form-control" id="username" placeholder="name@example.com" name="username">
-<label for="username">Email</label>
+<label for="username">Username</label>
 </div>
 
 </div>
@@ -180,6 +180,7 @@ if(isset($_POST["verify"])) {
             title: 'Success!',
             text: 'OTP verified successfully! Your account is now active.',
             icon: 'success',
+            confirmButtonColor: '#d9534f',
         
           }); 
           let button = document.querySelectorAll('.swal2-confirm').forEach(a=>a.onclick =function (){
@@ -197,6 +198,7 @@ if(isset($_POST["verify"])) {
             title: 'Invalid OTP!',
             text: 'Invalid OTP. Please try again.',
             icon: 'error',
+            confirmButtonColor: '#d9534f',
         
           }); 
        

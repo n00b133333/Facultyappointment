@@ -145,7 +145,7 @@ padding: 20px;
 
 <div class="form-floating mb-3">
 <input type="text" class="form-control shadow-sm" id="unamelogin" placeholder="name@example.com" name="uname">
-<label for="email">Email</label>
+<label for="email">Username</label>
 </div>
 
 </div>

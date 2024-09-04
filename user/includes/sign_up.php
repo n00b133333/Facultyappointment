@@ -14,6 +14,7 @@ if (isset($_POST['submit'])) {
     $address = $_POST['address'];
     $pass = $_POST['pass'];
     $cpass = $_POST['cpass'];
+    $uname = $_POST['uname'];
 
     $errorEmpty = false;
     $errorEmail = false;
@@ -30,14 +31,10 @@ if (isset($_POST['submit'])) {
     $errorpass = false;
     $errorcpass = false;
     $userExist = false;
-
-    // Generate username
-    $year = date('y'); // Get the current year (last two digits)
-    $orderNumber = str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT); // Generate a random order number
-    $uname = "TUPT-$year-$orderNumber";
+    $errorUname = false;
 
     // Validate fields
-    if (empty($fname) || empty($mname) || empty($lname) || empty($bday) || empty($contact) || empty($pass) || empty($cpass) || empty($email) || empty($address)) {
+    if (empty($fname) || empty($mname) || empty($lname) || empty($bday) || empty($contact) || empty($pass) || empty($cpass) || empty($email) || empty($address) || empty($uname)) {
         echo "<div class='alert alert-danger alert-dismissible fade show animate__animated animate__fadeOut' role='alert'>
         <strong>Please fill in all important details!</strong><br> You should check in on some of those fields.
         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
@@ -51,8 +48,15 @@ if (isset($_POST['submit'])) {
         if (empty($address)) $erroraddress = true;
         if (empty($pass)) $errorpass = true;
         if (empty($cpass)) $errorcpass = true;
+        if (empty($uname)) $errorUname = true;
 
         $errorEmpty = true;
+    } else if (!preg_match('/^TUPT-\d{2}-\d{4}$/', $uname)) {
+        echo "<div class='alert alert-danger alert-dismissible fade show animate__animated animate__fadeOut' role='alert'>
+        <strong>Invalid Username Format!</strong><br> Username must follow the format TUPT-00-0000.
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+      </div>";
+        $errorUname = true;
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "<div class='alert alert-danger alert-dismissible fade show animate__animated animate__fadeOut' role='alert'>
         <strong>Invalid email address!</strong><br> You should write a valid email address.
@@ -115,7 +119,7 @@ if (isset($_POST['submit'])) {
 ?>
 
 <script>
-    $("#fname,#lname,#bday,#email,#contact,#address,#pass,#cpass").removeClass("is-invalid");
+    $("#fname,#lname,#bday,#email,#contact,#address,#pass,#cpass,#uname").removeClass("is-invalid");
     var errorEmpty = "<?php echo $errorEmpty; ?>";
     var errorEmail = "<?php echo $errorEmail; ?>";
     var errorContact = "<?php echo $errorContact; ?>";
@@ -129,6 +133,7 @@ if (isset($_POST['submit'])) {
     var errorpass = "<?php echo $errorpass; ?>";
     var errorcpass = "<?php echo $errorcpass; ?>";
     var errorCpass = "<?php echo $errorCpass; ?>";
+    var errorUname = "<?php echo $errorUname; ?>";
 
     if (errorEmpty) {
         if (errorfname) $("#fname").addClass("is-invalid");
@@ -139,10 +144,12 @@ if (isset($_POST['submit'])) {
         if (errorcontact) $("#contact").addClass("is-invalid");
         if (errorpass) $("#pass").addClass("is-invalid");
         if (errorcpass) $("#cpass").addClass("is-invalid");
+        if (errorUname) $("#uname").addClass("is-invalid");
     }
 
     if (errorEmail) $("#email").addClass("is-invalid");
     if (errorCpass) $("#cpass").addClass("is-invalid");
     if (errorPass) $("#pass").addClass("is-invalid");
     if (errorContact) $("#contact").addClass("is-invalid");
+    if (errorUname) $("#uname").addClass("is-invalid");
 </script>

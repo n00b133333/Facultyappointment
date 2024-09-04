@@ -232,6 +232,10 @@ padding: 20px;
 
 </div>
 
+
+
+
+
 <div class="col">
 
 <div class="form-floating mb-3">
@@ -249,6 +253,17 @@ padding: 20px;
 
 
 </div>
+
+<div class="col">
+
+<div class="form-floating mb-3">
+<input type="text" class="form-control shadow-sm" id="uname" placeholder="name@example.com" name="uname">
+<label for="uname">Username</label>
+</div>
+
+</div>
+
+
 <div class="col">
 
 <div class="form-floating mb-3">
